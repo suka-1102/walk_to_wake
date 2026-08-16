@@ -16,12 +16,13 @@ This block is written and re-added by `next dev` — verify at `node_modules/nex
 
 **v1 では実際の金銭は動かない。** Stripe による決済・返金は v2 以降のスコープで、v1 はペナルティ額の計算と表示までを行う。
 
-現在は要件定義段階で、`app/` は create-next-app の初期状態。仕様は下表ですべて確定済み（未確定事項なし）。
+現在は要件定義段階で、`app/` は create-next-app の初期状態。仕様は下表ですべて確定済み（未確定事項なし）。実装の順番と進捗は [docs/roadmap.md](docs/roadmap.md) が正で、**コミットのたびにそちらのチェックリストを更新する**。
 
 このファイルが仕様・規約の正。以下は**作業の種類に応じて**読む（全部読む必要はない）。
 
 | 読むタイミング | ファイル |
 |---|---|
+| **実装を進めるとき（最初に読む）** | [docs/roadmap.md](docs/roadmap.md) |
 | スタイルを書くとき | [docs/style.md](docs/style.md) |
 | テストを書くとき | [docs/testing.md](docs/testing.md) |
 | コミット・PR を出すとき | [docs/workflow.md](docs/workflow.md) |
