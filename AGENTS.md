@@ -18,6 +18,13 @@
 | コミット・PR を出すとき | [docs/workflow.md](docs/workflow.md) |
 | 環境変数を追加・参照するとき | [docs/env.md](docs/env.md) |
 
+## このファイルは AI が自動で修正・追記する
+
+身に覚えのない差分が出たらまずこの節を疑うこと。書き換えの経路は 2 つある。
+
+- **仕様・規約が変わったとき、AI エージェントがこのファイルを更新する。** 実装と仕様がズレたまま進めないよう、変更と同じコミットに含める。人が手で書き写す運用にはしない
+- **`bun run dev`（`next dev`）が末尾に英文ブロックを自動で書き戻す。** AI エージェント環境を検知すると `<!-- BEGIN:nextjs-agent-rules -->` 〜 `<!-- END:nextjs-agent-rules -->` を追記する（`node_modules/next/dist/server/lib/generate-agent-files.js`。無効化する設定は用意されていない）。**このブロックは不要。** 差分に出てきたらブロックごと削除し、コミットには含めない。AI も人も手動で書き足さない
+
 ## 使い方の流れ
 
 1. 現地へ行き、ブラウザの Geolocation API で取得した座標をそのまま目標地点として登録する（地図上でピンを指定する方式ではない）
@@ -139,7 +146,3 @@ DB（MySQL / Prisma）と認証（Auth.js）のセットアップ手順は、実
 - `prisma/migrations/` の**適用済み**ファイル — 書き換えず、新しいマイグレーションを追加して直す
 - `node_modules/`、`.next/`、`next-env.d.ts` — 自動生成物
 - `.env*` — 秘密情報。[docs/env.md](docs/env.md) を参照
-
-## `nextjs-agent-rules` ブロックを追記しない
-
-`bun run dev`（`next dev`）は、AI エージェント環境を検知するとこのファイルの末尾に `<!-- BEGIN:nextjs-agent-rules -->` 〜 `<!-- END:nextjs-agent-rules -->` の英文ブロックを自動で書き戻す（`node_modules/next/dist/server/lib/generate-agent-files.js`）。**このブロックは不要。** 再出現していたらブロックごと削除し、コミットには含めない。エージェントも人も、手動でこのブロックを書き足さないこと。
