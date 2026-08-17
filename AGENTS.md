@@ -1,13 +1,3 @@
-<!-- BEGIN:nextjs-agent-rules -->
-
-# This is NOT the Next.js you know
-
-This version has breaking changes — APIs, conventions, and file structure may all differ from your training data. Read the relevant guide in `node_modules/next/dist/docs/` (resolved from this file's directory; in monorepos the `next` package may not be visible from the repo root) before writing any code. Heed deprecation notices.
-
-This block is written and re-added by `next dev` — verify at `node_modules/next/dist/server/lib/generate-agent-files.js`. Removing it from a diff only re-creates the uncommitted change; committing it with your work keeps the tree clean.
-
-<!-- END:nextjs-agent-rules -->
-
 # Walk to Wake
 
 自分で設定した目標地点に、決めた時刻までに実際に足を運ぶ（＝チェックインする）ことを、デポジット（預り金）の減額というペナルティで後押しする Web アプリ。
@@ -93,7 +83,7 @@ This block is written and re-added by `next dev` — verify at `node_modules/nex
 ## 技術スタック
 
 - **Bun** — `npm` / `npx` / `yarn` は使わない（`npx` の代わりに `bunx`）
-- **Next.js 16 (App Router) + React 19 + TypeScript** — `src/` は使わず `app/` はリポジトリ直下
+- **Next.js 16 (App Router) + React 19 + TypeScript** — `src/` は使わず `app/` はリポジトリ直下。学習データの Next.js とは API・規約・ファイル構成が異なる場合があるため、コードを書く前に `node_modules/next/dist/docs/` の該当ガイドを読み、非推奨の記載に従う
 - **CSS Modules + SCSS** — CSS-in-JS やユーティリティクラス方式は使わない
 - **MySQL + Prisma** — スキーマ・マイグレーション・クエリはすべて Prisma 経由。生 SQL は書かない
 - **Auth.js (next-auth)** — ソーシャルログイン。自前のパスワード管理はしない
@@ -148,5 +138,8 @@ DB（MySQL / Prisma）と認証（Auth.js）のセットアップ手順は、実
 - `bun.lock` — 手編集せず `bun` コマンド経由で更新する（コミット対象。削除しない）
 - `prisma/migrations/` の**適用済み**ファイル — 書き換えず、新しいマイグレーションを追加して直す
 - `node_modules/`、`.next/`、`next-env.d.ts` — 自動生成物
-- 冒頭の `nextjs-agent-rules` ブロック — `next dev` が再生成する
 - `.env*` — 秘密情報。[docs/env.md](docs/env.md) を参照
+
+## `nextjs-agent-rules` ブロックを追記しない
+
+`bun run dev`（`next dev`）は、AI エージェント環境を検知するとこのファイルの末尾に `<!-- BEGIN:nextjs-agent-rules -->` 〜 `<!-- END:nextjs-agent-rules -->` の英文ブロックを自動で書き戻す（`node_modules/next/dist/server/lib/generate-agent-files.js`）。**このブロックは不要。** 再出現していたらブロックごと削除し、コミットには含めない。エージェントも人も、手動でこのブロックを書き足さないこと。
