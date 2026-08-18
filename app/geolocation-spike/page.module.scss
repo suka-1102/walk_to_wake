@@ -1,0 +1,10 @@
+@use "@/styles/variables" as v;
+
+.page {
+  max-width: v.$breakpoint-sm;
+  margin: 0 auto;
+  padding: v.$spacing-lg v.$spacing-md;
+  display: flex;
+  flex-direction: column;
+  gap: v.$spacing-sm;
+}
