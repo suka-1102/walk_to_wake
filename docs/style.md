@@ -14,7 +14,3 @@ CSS Modules + SCSS で書く。CSS-in-JS やユーティリティクラス方式
 - 色・余白・ブレークポイントを直書きせず、`styles/_variables.scss` を `@use` で読み込む
 - ネストは3階層程度まで
 - グローバルスタイルに要素セレクタでの装飾を足さない。コンポーネント固有の見た目は CSS Modules 側に置く
-
-## 現状
-
-まだ Tailwind CSS v4（`@tailwindcss/postcss`、`app/globals.css`）が残っている。実装着手時に撤去し、`sass` を入れて上記の構成へ移行する。

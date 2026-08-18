@@ -1,0 +1,25 @@
+@use "@/styles/variables" as v;
+
+:root {
+  --background: #{v.$color-background};
+  --foreground: #{v.$color-foreground};
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #{v.$color-background-dark};
+    --foreground: #{v.$color-foreground-dark};
+  }
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: v.$font-sans;
+}
