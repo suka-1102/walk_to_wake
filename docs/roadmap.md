@@ -21,6 +21,7 @@
 - 計画から外れたら計画のほうを直す
 - 各コミットは単体で `bun run build` が通ること（Phase 0 のみ例外）
 - フェーズごとに `develop` から `feature/*` を切る
+- 1項目ごとの確認、push、マージの手順は [workflow.md](workflow.md)
 
 ---
 
