@@ -21,9 +21,6 @@ export const MIN_DEPOSIT_YEN = 3000;
 /** デポジット額の上限（円） */
 export const MAX_DEPOSIT_YEN = 30000;
 
-/** 目標地点を変更できる回数。チャレンジ単位ではなくアカウント単位の累積 */
-export const MAX_LOCATION_CHANGE_COUNT = 3;
-
 /** システム利用料の料率（パーセント）。円の整数計算に載せるため、率ではなく百分率で持つ */
 export const SYSTEM_FEE_PERCENT = 3;
 
