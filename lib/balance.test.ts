@@ -15,7 +15,14 @@ describe("countFailures", () => {
     expect(countFailures(0, 0)).toBe(0);
   });
 
-  it("当日の期限前にチェックイン済みで成功日数のほうが多くても、負の値にはならない", () => {
+  it("まだ期限が来ていない当日の分は成功日数に含めない", () => {
+    // 8/1〜8/10・期限 7:30 のチャレンジを 8/5 6:00 に見た場合。
+    // 期限を過ぎたのは 8/1〜8/4 の 4日で、そのうち成功は 8/1・8/2 の 2日。
+    // 同じ日の 6:00 に済ませたチェックインを含めて 3 と数えると、失敗が 1 に減ってしまう。
+    expect(countFailures(4, 2)).toBe(2);
+  });
+
+  it("範囲を取り違えて成功日数のほうが多くなっても、負の値にはならない", () => {
     expect(countFailures(0, 1)).toBe(0);
   });
 });
@@ -27,7 +34,7 @@ describe("calculateChallengeBalance", () => {
       calculateChallengeBalance({
         depositYen: deposit,
         daysPastDeadline: 3,
-        successfulCheckInCount: 3,
+        checkInCountPastDeadline: 3,
       })
     ).toEqual({ failureCount: 0, balanceYen: deposit, hasFailedEarly: false });
   });
@@ -38,7 +45,7 @@ describe("calculateChallengeBalance", () => {
       calculateChallengeBalance({
         depositYen: deposit,
         daysPastDeadline: 3,
-        successfulCheckInCount: 1,
+        checkInCountPastDeadline: 1,
       })
     ).toEqual({
       failureCount: 2,
@@ -51,7 +58,7 @@ describe("calculateChallengeBalance", () => {
     const result = calculateChallengeBalance({
       depositYen: PENALTY_YEN * 6,
       daysPastDeadline: 5,
-      successfulCheckInCount: 0,
+      checkInCountPastDeadline: 0,
     });
     expect(result.balanceYen).toBe(PENALTY_YEN);
     expect(result.hasFailedEarly).toBe(false);
@@ -61,7 +68,7 @@ describe("calculateChallengeBalance", () => {
     const result = calculateChallengeBalance({
       depositYen: PENALTY_YEN * 7 - 1,
       daysPastDeadline: 6,
-      successfulCheckInCount: 0,
+      checkInCountPastDeadline: 0,
     });
     expect(result.balanceYen).toBe(PENALTY_YEN - 1);
     expect(result.hasFailedEarly).toBe(true);
@@ -71,7 +78,7 @@ describe("calculateChallengeBalance", () => {
     const result = calculateChallengeBalance({
       depositYen: PENALTY_YEN * 6,
       daysPastDeadline: 6,
-      successfulCheckInCount: 0,
+      checkInCountPastDeadline: 0,
     });
     expect(result.balanceYen).toBe(0);
     expect(result.hasFailedEarly).toBe(true);
@@ -82,12 +89,12 @@ describe("calculateChallengeBalance", () => {
     const atEarlyFailure = calculateChallengeBalance({
       depositYen: deposit,
       daysPastDeadline: 6,
-      successfulCheckInCount: 0,
+      checkInCountPastDeadline: 0,
     });
     const muchLater = calculateChallengeBalance({
       depositYen: deposit,
       daysPastDeadline: 30,
-      successfulCheckInCount: 0,
+      checkInCountPastDeadline: 0,
     });
     expect(muchLater).toEqual(atEarlyFailure);
   });
@@ -97,7 +104,7 @@ describe("calculateChallengeBalance", () => {
     const result = calculateChallengeBalance({
       depositYen: PENALTY_YEN * 6 + remainder,
       daysPastDeadline: 30,
-      successfulCheckInCount: 0,
+      checkInCountPastDeadline: 0,
     });
     expect(result).toEqual({
       failureCount: 6,

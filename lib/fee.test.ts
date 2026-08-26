@@ -32,7 +32,7 @@ describe("calculateRefundYen", () => {
     const balance = calculateChallengeBalance({
       depositYen: 3000,
       daysPastDeadline: 10,
-      successfulCheckInCount: 10,
+      checkInCountPastDeadline: 10,
     });
     expect(calculateRefundYen(balance)).toBe(3000);
   });
@@ -41,7 +41,7 @@ describe("calculateRefundYen", () => {
     const balance = calculateChallengeBalance({
       depositYen: 10000,
       daysPastDeadline: 10,
-      successfulCheckInCount: 7,
+      checkInCountPastDeadline: 7,
     });
     expect(calculateRefundYen(balance)).toBe(10000 - 500 * 3);
   });
@@ -50,7 +50,7 @@ describe("calculateRefundYen", () => {
     const balance = calculateChallengeBalance({
       depositYen: 3000,
       daysPastDeadline: 5,
-      successfulCheckInCount: 0,
+      checkInCountPastDeadline: 0,
     });
     expect(balance.hasFailedEarly).toBe(false);
     expect(calculateRefundYen(balance)).toBe(500);
@@ -60,7 +60,7 @@ describe("calculateRefundYen", () => {
     const balance = calculateChallengeBalance({
       depositYen: 3000,
       daysPastDeadline: 6,
-      successfulCheckInCount: 0,
+      checkInCountPastDeadline: 0,
     });
     expect(balance.hasFailedEarly).toBe(true);
     expect(calculateRefundYen(balance)).toBe(0);
@@ -70,7 +70,7 @@ describe("calculateRefundYen", () => {
     const balance = calculateChallengeBalance({
       depositYen: 3200,
       daysPastDeadline: 30,
-      successfulCheckInCount: 0,
+      checkInCountPastDeadline: 0,
     });
     expect(balance.balanceYen).toBe(200);
     expect(calculateRefundYen(balance)).toBe(0);

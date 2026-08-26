@@ -37,3 +37,27 @@ export const countDaysPastDeadline = (
 
   return count;
 };
+
+/**
+ * すでに期限時刻を過ぎた最終日（その日の 0 時）。1日も過ぎていなければ null。
+ *
+ * チェックイン成功日数を数える範囲をこの日までに揃えるために使う。範囲を揃えないと、
+ * まだ期限が来ていない当日のチェックインが過去の失敗を打ち消し、失敗回数が1回少なくなる。
+ */
+export const lastDayPastDeadline = (
+  now: Date,
+  startDate: Date,
+  endDate: Date,
+  deadline: DeadlineTime
+): Date | null => {
+  const daysPastDeadline = countDaysPastDeadline(now, startDate, endDate, deadline);
+
+  if (daysPastDeadline === 0) {
+    return null;
+  }
+
+  const lastDay = startOfDay(startDate);
+  lastDay.setDate(lastDay.getDate() + daysPastDeadline - 1);
+
+  return lastDay;
+};
