@@ -5,7 +5,7 @@ CSS Modules + SCSS で書く。CSS-in-JS やユーティリティクラス方式
 ## ファイル配置
 
 - `*.module.scss` をコンポーネントと同階層に置く（`Foo.tsx` / `Foo.module.scss`）
-- `app/globals.scss` — リセットとフォント指定のみ。最小限に留める
+- `app/globals.scss` — リセット CSS の読み込みとフォント指定のみ。最小限に留める
 - `styles/_variables.scss` — 色・余白・ブレークポイント
 
 ## 書き方

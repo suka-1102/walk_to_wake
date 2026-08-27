@@ -1,5 +1,8 @@
 @use "@/styles/variables" as v;
 
+// リセット CSS。自前のリセットは持たず destyle.css に任せる
+@import url("https://cdn.jsdelivr.net/npm/destyle.css@1.0.15/destyle.css");
+
 :root {
   --background: #{v.$color-background};
   --foreground: #{v.$color-foreground};
@@ -10,12 +13,6 @@
     --background: #{v.$color-background-dark};
     --foreground: #{v.$color-foreground-dark};
   }
-}
-
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
 }
 
 body {
