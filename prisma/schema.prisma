@@ -9,3 +9,53 @@ generator client {
 datasource db {
   provider = "mysql"
 }
+
+model User {
+  id             String          @id @default(cuid())
+  displayName    String
+  savedLocations SavedLocation[]
+  challenges     Challenge[]
+}
+
+model SavedLocation {
+  id        String   @id @default(cuid())
+  userId    String
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  name      String
+  latitude  Float
+  longitude Float
+  createdAt DateTime @default(now())
+
+  @@index([userId])
+}
+
+model Challenge {
+  id             String    @id @default(cuid())
+  userId         String
+  user           User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  /// userId のコピー。終了時に null へ戻すことで「1ユーザー1チャレンジ」をこの一意制約でDBに担保する
+  activeUserId   String?   @unique
+  locationName   String
+  latitude       Float
+  longitude      Float
+  deadlineHour   Int
+  deadlineMinute Int
+  startDate      DateTime  @db.Date
+  endDate        DateTime  @db.Date
+  depositYen     Int
+  /// null なら進行中。期間満了 or 早期失敗の条件を満たしたとき、アクセス時に一度だけ書き込む
+  endedAt        DateTime?
+  createdAt      DateTime  @default(now())
+  checkIns       CheckIn[]
+
+  @@index([userId])
+}
+
+model CheckIn {
+  id          String    @id @default(cuid())
+  challengeId String
+  challenge   Challenge @relation(fields: [challengeId], references: [id], onDelete: Cascade)
+  date        DateTime  @db.Date
+
+  @@unique([challengeId, date])
+}
