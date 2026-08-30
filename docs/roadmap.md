@@ -13,7 +13,8 @@
 - Phase 1 完了（距離・受付時間・期限超過日数・失敗回数と残高・システム利用料と返金額をすべて `lib/` の純粋関数として実装、テスト付き）
 - 2.1 完了（`prisma`・`@prisma/client` を導入。`prisma/schema.prisma` は MySQL データソースのみでモデル未定義。`.env.example` を追加）
 - 2.2 完了（`User`・`SavedLocation`・`Challenge`・`CheckIn` のスキーマを追加。マイグレーションは未実行 — 接続先 DB が未セットアップのため 3.2 までに整える）
-- 次にやること: **2.3**
+- Phase 2 完了（2.3: `lib/prisma.ts` に共有インスタンスを追加。Prisma 7 はドライバアダプタが必須のため `@prisma/adapter-mariadb` を使用）
+- 次にやること: **Phase 3（`feature/auth`）3.1**
 
 ## ルール
 
@@ -70,9 +71,11 @@
 
 - [x] **2.1** Prisma を導入
 - [x] **2.2** チャレンジ・チェックイン・保存した目標地点のスキーマを追加
-- [ ] **2.3** Prisma Client の共有インスタンスを追加
+- [x] **2.3** Prisma Client の共有インスタンスを追加
 
 `CheckIn` の `(challengeId, date)` に一意制約を張り、「1日1回」を DB 側で担保する。
+
+**Prisma 7 はドライバアダプタが必須。** `schema.prisma` に `url = env("DATABASE_URL")` を書く旧方式ではなく、`new PrismaClient({ adapter })` の形で接続先を渡す必要がある（Accelerate を使わない限り必須。生成されたクライアントの型定義にそう明記されている）。MySQL 用に `@prisma/adapter-mariadb` を追加し、`lib/prisma.ts` で `PrismaMariaDb(process.env.DATABASE_URL!)` を渡している。生成された Prisma Client 本体は `@/lib/generated/prisma` ではなく `@/lib/generated/prisma/client`（`index.ts` が無いため）からimportする。
 
 **`Challenge` は目標地点の名前と座標を写して持つ。** `SavedLocation` を参照するだけにすると、台帳から削除されたときに進行中・終了済みのチャレンジが目標地点を失う。写しておけば台帳は選択肢の置き場に徹せられ、削除を自由に許せる。
 
