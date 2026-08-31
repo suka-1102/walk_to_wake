@@ -153,7 +153,17 @@ bunx prisma studio                         # DB を GUI で確認
 
 **変更後は必ず `bun run lint` と `bun run build` を通す。**
 
-DB（MySQL / Prisma）と認証（Auth.js）のセットアップ手順は、実装に着手した時点でここに追記する。
+DB（MySQL / Prisma）のセットアップ手順は、接続先を用意した時点でここに追記する。
+
+### Auth.js のセットアップ
+
+設定は [lib/auth.ts](lib/auth.ts)、エンドポイントは `app/api/auth/[...nextauth]/route.ts`。値は `.env` に置く（[docs/env.md](docs/env.md)）。
+
+1. `AUTH_SECRET` を生成する（`bunx auth secret` でも、ランダムな文字列を自分で入れてもよい）
+2. Google Cloud Console で OAuth 2.0 クライアント ID（種類: ウェブアプリケーション）を作り、`AUTH_GOOGLE_ID` / `AUTH_GOOGLE_SECRET` に入れる
+3. 承認済みのリダイレクト URI に `http://localhost:3000/api/auth/callback/google` を登録する
+
+**キー名は Auth.js の規約どおりに揃える。** `AUTH_SECRET` と `AUTH_GOOGLE_ID` / `AUTH_GOOGLE_SECRET` はコードに書かなくても自動で読まれるため、独自の名前を付けると設定を明示的に渡す手間が増えるだけになる。
 
 ## ディレクトリ構成（実装時にこの形に育てる）
 

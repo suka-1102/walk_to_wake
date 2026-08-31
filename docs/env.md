@@ -1,6 +1,8 @@
 # 環境変数・秘密情報
 
-秘密情報は `.env.local` に置き、**絶対にコミットしない**（`.env*` は gitignore 済み）。キー名だけを記した [.env.example](../.env.example)（値は空）は例外的にコミットする。
+秘密情報は `.env` に置き、**絶対にコミットしない**（`.env*` は gitignore 済み）。キー名だけを記した [.env.example](../.env.example)（値は空）は例外的にコミットする。
+
+**置き場は `.env` 1つに揃える。** Next.js は `.env.local` も読むが、[prisma7.config.ts](../prisma7.config.ts) の `dotenv/config` は `.env` しか見ない。分けると `bunx prisma` 系のコマンドから `DATABASE_URL` が見えなくなる。
 
 ## 扱うキー
 

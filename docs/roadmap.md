@@ -6,7 +6,7 @@
 
 ## 現在地
 
-**最終更新: 2026-08-30**
+**最終更新: 2026-08-31**
 
 - Phase 0 / Phase 0.5 完了（bun 移行、Tailwind 撤去、SCSS 導入、Vitest 導入済み。位置精度は実測済みで 50m ガード据え置き）
 - 画面構成を確定（[screens.md](screens.md)）
@@ -14,7 +14,8 @@
 - 2.1 完了（`prisma`・`@prisma/client` を導入。`prisma/schema.prisma` は MySQL データソースのみでモデル未定義。`.env.example` を追加）
 - 2.2 完了（`User`・`SavedLocation`・`Challenge`・`CheckIn` のスキーマを追加。マイグレーションは未実行 — 接続先 DB が未セットアップのため 3.2 までに整える）
 - Phase 2 完了（2.3: `lib/prisma.ts` に共有インスタンスを追加。Prisma 7 はドライバアダプタが必須のため `@prisma/adapter-mariadb` を使用）
-- 次にやること: **Phase 3（`feature/auth`）3.1**
+- 3.1 完了（`next-auth@beta`（Auth.js v5）を導入。`lib/auth.ts` に Google プロバイダのみの設定を置き、`app/api/auth/[...nextauth]/route.ts` から `handlers` を公開。アダプタ未導入のためセッションは JWT）
+- 次にやること: **Phase 3（`feature/auth`）3.2**
 
 ## ルール
 
@@ -87,7 +88,7 @@
 
 ## Phase 3 — 認証 `feature/auth`
 
-- [ ] **3.1** Auth.js による Google ログインを追加
+- [x] **3.1** Auth.js による Google ログインを追加
 - [ ] **3.2** 認証情報を DB に保存するよう設定
 - [ ] **3.3** ログイン画面とセッションガードを追加
 - [ ] **3.4** 利用規約とプライバシーポリシーのページを追加
