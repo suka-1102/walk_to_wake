@@ -153,7 +153,23 @@ bunx prisma studio                         # DB を GUI で確認
 
 **変更後は必ず `bun run lint` と `bun run build` を通す。**
 
-DB（MySQL / Prisma）のセットアップ手順は、接続先を用意した時点でここに追記する。
+### MySQL のセットアップ
+
+ローカルに MySQL 8.0 をインストールして使う（Docker やクラウドは使わない）。
+
+1. MySQL 8.0（MySQL Workbench 付属のインストーラなど）をインストールする
+2. アプリ専用の DB とユーザーを作る。`root` は使わない（インストール時の用途と混ざるため）
+
+   ```sql
+   CREATE DATABASE walk_to_wake;
+   CREATE USER 'walk_to_wake'@'localhost' IDENTIFIED BY '<パスワード>';
+   GRANT ALL PRIVILEGES ON walk_to_wake.* TO 'walk_to_wake'@'localhost';
+   -- prisma migrate dev が検証用のシャドウDBを都度作成・削除するために必要
+   GRANT CREATE, DROP ON *.* TO 'walk_to_wake'@'localhost';
+   FLUSH PRIVILEGES;
+   ```
+
+3. `.env` の `DATABASE_URL` に `mysql://walk_to_wake:<パスワード>@localhost:3306/walk_to_wake` を設定する
 
 ### Auth.js のセットアップ
 
