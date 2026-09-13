@@ -6,7 +6,7 @@
 
 ## 現在地
 
-**最終更新: 2026-09-12**
+**最終更新: 2026-09-13**
 
 - Phase 0 / Phase 0.5 完了（bun 移行、Tailwind 撤去、SCSS 導入、Vitest 導入済み。位置精度は実測済みで 50m ガード据え置き）
 - 画面構成を確定（[screens.md](screens.md)）
@@ -17,7 +17,8 @@
 - 3.1 完了（`next-auth@beta`（Auth.js v5）を導入。`lib/auth.ts` に Google プロバイダのみの設定を置き、`app/api/auth/[...nextauth]/route.ts` から `handlers` を公開。アダプタ未導入のためセッションは JWT）
 - 3.2 完了（`@auth/prisma-adapter` を導入し `lib/auth.ts` に接続。ローカルに MySQL 8.0 をセットアップし（[AGENTS.md](../AGENTS.md)）、`Account`・`Session`・`VerificationToken` を追加してマイグレーションを適用。セッションは DB 参照に切り替わった）
 - 3.3 完了（`/login` とセッションガードを追加。ガードは `proxy.ts`（Next.js 16 で `middleware.ts` から改称）がクッキーの有無だけを見て未ログインを `/login` へ寄せ、実際のセッション検証は各ページの `auth()` で行う。あわせて配色・フォントを画面モックのデザインシステムに寄せた）
-- 次にやること: **Phase 3（`feature/auth`）3.4**
+- Phase 3 完了（3.4: `/terms`・`/privacy` を静的ページとして追加。両文書とも共通コンポーネント `app/_legal/LegalDocument.tsx` で描画する。実際にGoogleログインの動作確認まで完了し、Phase 3 が完了した）
+- 次にやること: **Phase 4（`feature/challenge-create`）4.1**
 
 ## ルール
 
@@ -93,7 +94,7 @@
 - [x] **3.1** Auth.js による Google ログインを追加
 - [x] **3.2** 認証情報を DB に保存するよう設定
 - [x] **3.3** ログイン画面とセッションガードを追加
-- [ ] **3.4** 利用規約とプライバシーポリシーのページを追加
+- [x] **3.4** 利用規約とプライバシーポリシーのページを追加
 
 これ以降の画面はすべて「誰の」チャレンジかを必要とする。後から入れると全画面を直すことになる。
 
@@ -201,3 +202,4 @@
 - **2026-09-12** `User.displayName` は Auth.js の `PrismaAdapter` が書き込まない独自カラムのため、NOT NULL を保ったまま `@default("")` で作成しつつ、`lib/auth.ts` の `events.createUser` で Google プロフィールの `name` を書き戻す方式にした。`profile()` コールバックの返り値に独自フィールドを混ぜる方法は型の整合を取りにくいため採らない
 - **2026-09-12** セッションガードは `proxy.ts`（Next.js 16 で `middleware.ts` から改称。既定で Node.js ランタイム）に置き、**クッキーの有無だけを見て未ログインを `/login` へ寄せる**。セッションが生きているかの検証は各ページの `auth()` に任せる。Proxy はレンダリングとは別に前段で走る仕組みで、ここに Prisma を持ち込むと全リクエストが DB を引くため。**「ログイン済みなら `/login` を `/` へ返す」判断は Proxy に置かない** — DB からセッションが消えてクッキーだけ残った状態で `/` と `/login` が互いに転送し合う無限ループになるため、実際にセッションを引ける `/login` のページ側に置く
 - **2026-09-12** 配色・フォントを画面モック（B｜計器盤）のデザインシステムに合わせて `styles/_variables.scss` に入れ、**ダークテーマは持たない**ことにした（モックが明るい配色ひとつだけで組まれており、反転した配色を設計していないため）。フォントは `next/font/google` の BIZ UDPGothic（日本語本文）と IBM Plex Mono（数値・ラベル・英字）に差し替え、create-next-app の Geist を外した
+- **2026-09-13** `docs/terms-draft.md`・`docs/privacy-draft.md`はユーザーの指示で一時「v2（実決済）完成後」の前提に書き換えていたが、3.4で実装するのはv1（実決済なし）の`/terms`・`/privacy`なので、そのまま使うと実態と食い違う。terms-draft.mdはコミット `176e02e`（書き換え前）のv1版をGit履歴から復元し、privacy-draft.mdは決済関連の条項（取得する情報・保存範囲・第三者提供・決済情報の取扱い・開示等の条）を手作業で取り除いてAGENTS.mdのv1スコープに合わせ直した。ドラフトファイル自体（v2版）はそのまま残し、v2着手時の参考にする

@@ -1,0 +1,122 @@
+@use "@/styles/variables" as v;
+
+.screen {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  width: 100%;
+  max-width: v.$width-screen;
+  min-height: 100dvh;
+  margin: 0 auto;
+  padding: 24px v.$spacing-md 40px;
+}
+
+.backLink {
+  align-self: flex-start;
+  margin-bottom: 20px;
+  font-size: 12px;
+  color: v.$color-text-sub;
+
+  &:hover {
+    color: v.$color-accent;
+  }
+}
+
+.title {
+  margin-bottom: 8px;
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 1.5;
+}
+
+.intro {
+  margin-bottom: 20px;
+  font-size: 12px;
+  line-height: 1.9;
+  color: v.$color-text-sub;
+  text-wrap: pretty;
+}
+
+.article {
+  padding: 16px 0;
+  border-top: 1px solid v.$color-border-inner;
+}
+
+.heading {
+  margin-bottom: 10px;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.paragraph {
+  font-size: 12px;
+  line-height: 1.9;
+  color: v.$color-text;
+  text-wrap: pretty;
+
+  & + & {
+    margin-top: 10px;
+  }
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  counter-reset: item;
+  list-style: none;
+
+  > li {
+    position: relative;
+    padding-left: 22px;
+    font-size: 12px;
+    line-height: 1.9;
+    color: v.$color-text;
+    text-wrap: pretty;
+
+    &::before {
+      counter-increment: item;
+      content: counter(item) ".";
+      position: absolute;
+      left: 0;
+      font-family: v.$font-mono;
+      font-weight: 600;
+      color: v.$color-text-sub;
+    }
+  }
+}
+
+.subList {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-top: 8px;
+  counter-reset: subItem;
+  list-style: none;
+
+  > li {
+    position: relative;
+    padding-left: 26px;
+    font-size: 12px;
+    line-height: 1.8;
+    color: v.$color-text-sub;
+    text-wrap: pretty;
+
+    &::before {
+      counter-increment: subItem;
+      content: "(" counter(subItem) ")";
+      position: absolute;
+      left: 0;
+      font-family: v.$font-mono;
+      color: v.$color-border-control;
+    }
+  }
+}
+
+.supplementary {
+  margin-top: 28px;
+  padding-top: 16px;
+  border-top: 1px solid v.$color-border-inner;
+  font-size: 11px;
+  color: v.$color-text-sub;
+}
