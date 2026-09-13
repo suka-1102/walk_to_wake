@@ -14,6 +14,10 @@ import { prisma } from "@/lib/prisma";
 export const { handlers, signIn, signOut, auth } = NextAuth({
   adapter: PrismaAdapter(prisma),
   providers: [Google],
+  pages: {
+    // Auth.js 既定のログイン画面ではなく自前の /login を使う
+    signIn: "/login",
+  },
   events: {
     // displayName は NOT NULL のため createUser 時点では空文字で作成される。
     // ここで Google プロフィールの名前を初期値として書き戻す

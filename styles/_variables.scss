@@ -1,11 +1,22 @@
-// 色
-$color-background: #ffffff;
-$color-foreground: #171717;
-$color-background-dark: #0a0a0a;
-$color-foreground-dark: #ededed;
+// 色。画面モックのデザインシステム（B｜計器盤）に合わせる。角丸は持たない
+$color-bg: #f1f4f7; // 地
+$color-panel: #ffffff; // パネル
+$color-panel-head: #f7f9fb; // パネル見出し・注記の地
+$color-text: #0e141a; // 文字
+$color-text-sub: #5c6773; // 補助文字
+$color-border: #d8dfe6; // 罫線（外）
+$color-border-inner: #e4eaf0; // 罫線（内）
+$color-border-control: #9aa6b2; // 入力と副ボタンの枠・シェブロン
+$color-divider: #c4ced8; // フッターの区切り
 
-// フォント
-$font-sans: Arial, Helvetica, sans-serif;
+// アクセントは L=0.52 C=0.13 で固定し、色相だけ変える
+$color-accent: oklch(0.52 0.13 245); // 主操作
+$color-danger: oklch(0.52 0.13 27); // 失敗・破壊的操作
+$color-success: oklch(0.52 0.13 150); // 成功・受付中
+
+// フォント。日本語本文は BIZ UDPGothic、数値・ラベル・英字は IBM Plex Mono
+$font-sans: var(--font-biz-udpgothic), system-ui, sans-serif;
+$font-mono: var(--font-ibm-plex-mono), monospace;
 
 // 余白
 $spacing-xs: 4px;
@@ -14,7 +25,14 @@ $spacing-md: 16px;
 $spacing-lg: 32px;
 $spacing-xl: 64px;
 
+// 寸法。タップ対象は 44px 以上にする
+$size-input: 44px;
+$size-button: 52px;
+
 // ブレークポイント
 $breakpoint-sm: 640px;
 $breakpoint-md: 768px;
 $breakpoint-lg: 1024px;
+
+// スマホ縦画面を基準に設計し、PC では中央寄せで許容する
+$width-screen: 390px;

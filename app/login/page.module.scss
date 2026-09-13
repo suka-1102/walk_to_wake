@@ -1,0 +1,120 @@
+@use "@/styles/variables" as v;
+
+.screen {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+  width: 100%;
+  max-width: v.$width-screen;
+  min-height: 100dvh;
+  margin: 0 auto;
+  padding: 40px v.$spacing-md 12px;
+}
+
+.lead {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 0 2px;
+}
+
+.title {
+  font-size: 25px;
+  font-weight: 700;
+  line-height: 1.45;
+  letter-spacing: -0.01em;
+  text-wrap: pretty;
+}
+
+.description {
+  font-size: 13px;
+  line-height: 1.8;
+  color: v.$color-text-sub;
+  text-wrap: pretty;
+}
+
+.guide {
+  background: v.$color-panel;
+  border: 1px solid v.$color-border;
+}
+
+.guideHeading {
+  display: flex;
+  align-items: center;
+  height: 30px;
+  padding: 0 14px;
+  background: v.$color-panel-head;
+  border-bottom: 1px solid v.$color-border-inner;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  color: v.$color-text-sub;
+}
+
+// 番号は ::marker ではなくカウンタで出す。区切り線をパネルいっぱいに伸ばしたまま、
+// 折り返した本文を番号の右に揃えるため
+.steps {
+  counter-reset: step;
+}
+
+.step {
+  position: relative;
+  padding: 11px 14px 11px 39px;
+  font-size: 12px;
+  line-height: 1.7;
+  text-wrap: pretty;
+
+  &::before {
+    counter-increment: step;
+    content: counter(step) ".";
+    position: absolute;
+    left: 14px;
+    font-family: v.$font-mono;
+    font-weight: 600;
+    color: v.$color-text-sub;
+  }
+
+  &:not(:last-child) {
+    border-bottom: 1px solid v.$color-border-inner;
+  }
+}
+
+// ログインボタンと同意文を画面の下端に寄せる
+.action {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin-top: auto;
+}
+
+.googleButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: v.$size-button;
+  background: v.$color-panel;
+  border: 1px solid v.$color-border-control;
+  color: v.$color-text;
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+
+  &:hover {
+    background: v.$color-panel-head;
+  }
+}
+
+.consent {
+  font-size: 11px;
+  line-height: 1.9;
+  color: v.$color-text-sub;
+  text-align: center;
+  text-wrap: pretty;
+
+  a {
+    color: v.$color-accent;
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+}

@@ -19,3 +19,16 @@
 - サーバー側（Server Component / Route Handler）でのみ読む。Client Component から参照しない
 - 値をコード・コミットメッセージ・PR・README・ログ出力に書かない
 - キーを追加したら `.env.example` と上の表も更新する
+
+## このマシンでの開発サーバー起動について
+
+このPCはAvast（アンチウイルス）がHTTPS通信を検査のために横取りしており、Node.jsが標準では持たないAvastの証明書を信頼させないと、外部との通信（Google OAuthなど）が `fetch failed` で失敗する。
+
+**Claude Codeのプレビュー機能（`.claude/launch.json` 経由）で起動すると、環境変数の設定が反映されない場合がある。** その場合は、別のターミナルを自分で開いて次のように起動する。
+
+```powershell
+$env:NODE_EXTRA_CA_CERTS = "C:\ProgramData\Avast Software\Avast\wscert.pem"
+bun run dev
+```
+
+`.env` に `NODE_EXTRA_CA_CERTS` を書いても効かない（Next.js が読み込むタイミングでは Node.js 側のTLS初期化が既に終わっているため）。ターミナルで直接、コマンドの前に環境変数として渡す必要がある。
