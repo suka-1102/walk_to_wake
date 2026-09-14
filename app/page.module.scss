@@ -1,0 +1,43 @@
+@use "@/styles/variables" as v;
+
+.screen {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  width: 100%;
+  max-width: v.$width-screen;
+  min-height: 100dvh;
+  margin: 0 auto;
+  padding: 40px v.$spacing-md 12px;
+}
+
+.title {
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 1.5;
+}
+
+.note {
+  font-size: 13px;
+  line-height: 1.8;
+  color: v.$color-text-sub;
+  text-wrap: pretty;
+}
+
+.signOutButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: v.$size-button;
+  background: v.$color-panel;
+  border: 1px solid v.$color-border-control;
+  color: v.$color-text;
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+
+  &:hover {
+    background: v.$color-panel-head;
+  }
+}

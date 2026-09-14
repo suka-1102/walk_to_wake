@@ -153,7 +153,33 @@ bunx prisma studio                         # DB を GUI で確認
 
 **変更後は必ず `bun run lint` と `bun run build` を通す。**
 
-DB（MySQL / Prisma）と認証（Auth.js）のセットアップ手順は、実装に着手した時点でここに追記する。
+### MySQL のセットアップ
+
+ローカルに MySQL 8.0 をインストールして使う（Docker やクラウドは使わない）。
+
+1. MySQL 8.0（MySQL Workbench 付属のインストーラなど）をインストールする
+2. アプリ専用の DB とユーザーを作る。`root` は使わない（インストール時の用途と混ざるため）
+
+   ```sql
+   CREATE DATABASE walk_to_wake;
+   CREATE USER 'walk_to_wake'@'localhost' IDENTIFIED BY '<パスワード>';
+   GRANT ALL PRIVILEGES ON walk_to_wake.* TO 'walk_to_wake'@'localhost';
+   -- prisma migrate dev が検証用のシャドウDBを都度作成・削除するために必要
+   GRANT CREATE, DROP ON *.* TO 'walk_to_wake'@'localhost';
+   FLUSH PRIVILEGES;
+   ```
+
+3. `.env` の `DATABASE_URL` に `mysql://walk_to_wake:<パスワード>@localhost:3306/walk_to_wake` を設定する
+
+### Auth.js のセットアップ
+
+設定は [lib/auth.ts](lib/auth.ts)、エンドポイントは `app/api/auth/[...nextauth]/route.ts`。値は `.env` に置く（[docs/env.md](docs/env.md)）。
+
+1. `AUTH_SECRET` を生成する（`bunx auth secret` でも、ランダムな文字列を自分で入れてもよい）
+2. Google Cloud Console で OAuth 2.0 クライアント ID（種類: ウェブアプリケーション）を作り、`AUTH_GOOGLE_ID` / `AUTH_GOOGLE_SECRET` に入れる
+3. 承認済みのリダイレクト URI に `http://localhost:3000/api/auth/callback/google` を登録する
+
+**キー名は Auth.js の規約どおりに揃える。** `AUTH_SECRET` と `AUTH_GOOGLE_ID` / `AUTH_GOOGLE_SECRET` はコードに書かなくても自動で読まれるため、独自の名前を付けると設定を明示的に渡す手間が増えるだけになる。
 
 ## ディレクトリ構成（実装時にこの形に育てる）
 
