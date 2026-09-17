@@ -18,7 +18,7 @@ import type { NextRequest } from "next/server";
  */
 
 /** ログイン前でも開けるパス。規約とポリシーを外すと「ログインをもって同意」が成り立たない */
-const PUBLIC_PATHS = ["/login", "/terms", "/privacy"];
+const PUBLIC_PATHS = ["/login", "/terms", "/privacy", "/tokushoho"];
 
 /** Auth.js のセッションクッキー。https では `__Secure-` が付く */
 const SESSION_COOKIE_NAMES = [
