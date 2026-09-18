@@ -1,0 +1,37 @@
+@use "@/styles/variables" as v;
+
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: v.$spacing-sm;
+}
+
+.button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: v.$size-button;
+  background: v.$color-panel;
+  border: 1px solid v.$color-border-control;
+  color: v.$color-text;
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+
+  &:hover {
+    background: v.$color-panel-head;
+  }
+}
+
+.waiting {
+  font-size: 13px;
+  color: v.$color-text-sub;
+}
+
+.error {
+  font-size: 12px;
+  line-height: 1.8;
+  color: v.$color-danger;
+  text-wrap: pretty;
+}

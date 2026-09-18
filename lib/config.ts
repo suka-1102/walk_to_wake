@@ -9,6 +9,13 @@ export const CHECK_IN_RADIUS_METERS = 100;
 /** 採用してよい位置精度の上限（メートル）。Geolocation の accuracy がこれを超える座標は使わない */
 export const MAX_ACCURACY_METERS = 50;
 
+/**
+ * 位置精度の収束を待つ上限時間（ミリ秒）。
+ * 初回のコールバックは Wi-Fi・基地局ベースの粗い座標が返ることがあるため、
+ * 1回で判定せずこの時間だけ watchPosition を継続してから採否を決める。
+ */
+export const LOCATION_CONVERGENCE_TIMEOUT_MS = 8000;
+
 /** チェックインの受付を開始する時刻（JST の時） */
 export const CHECK_IN_START_HOUR = 4;
 
