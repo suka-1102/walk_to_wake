@@ -14,7 +14,7 @@ type LegalDocumentProps = {
   title: string;
   intro: string;
   articles: LegalArticle[];
-  supplementary: string;
+  supplementary?: string;
 };
 
 /**
@@ -68,7 +68,9 @@ export function LegalDocument({
         </section>
       ))}
 
-      <p className={styles.supplementary}>{supplementary}</p>
+      {supplementary && (
+        <p className={styles.supplementary}>{supplementary}</p>
+      )}
     </main>
   );
 }
