@@ -1,0 +1,248 @@
+@use "@/styles/variables" as v;
+
+// ---- チャレンジ作成画面 ----
+// 新デザイン（styles/_variables.scss の「新デザイン（移行中）」トークン）を適用した最初の画面。
+// 他画面はまだ旧デザインのまま（roadmap.md 決定ログ参照）。
+
+.screen {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: v.$width-screen;
+  min-height: 100dvh;
+  margin: 0 auto;
+  background: v.$color2-bg;
+  font-family: v.$font-sans;
+  color: v.$color2-text;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  height: 60px;
+  padding: 0 20px;
+  flex-shrink: 0;
+}
+
+.backButton {
+  width: 32px;
+  height: 32px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: v.$color2-panel;
+  border: 1px solid v.$color2-border-outer;
+  flex-shrink: 0;
+}
+
+.title {
+  font-size: 15px;
+  font-weight: 700;
+}
+
+.form {
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  padding: 4px 20px 0;
+}
+
+.section {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.sectionTitle {
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.card {
+  background: v.$color2-panel;
+  border-radius: 16px;
+  padding: 14px;
+}
+
+.rowBetween {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.rowHint {
+  font-size: 11px;
+  color: v.$color2-text-sub;
+}
+
+.rowSeparator {
+  color: #9aa6b2;
+  font-size: 12px;
+  flex-shrink: 0;
+}
+
+.timeInput,
+.dateInput {
+  border: none;
+  background: transparent;
+  color: v.$color2-text;
+  font-family: v.$font-mono;
+  font-weight: 600;
+  font-size: 20px;
+  text-align: right;
+  padding: 0;
+
+  &::-webkit-calendar-picker-indicator {
+    filter: invert(0.4);
+  }
+}
+
+.dateInput {
+  font-size: 13px;
+  min-width: 0;
+}
+
+.newLocationCard {
+  background: v.$color2-panel;
+  border-radius: 16px;
+  padding: 14px;
+}
+
+.acquiredLocation {
+  display: flex;
+  flex-direction: column;
+  gap: v.$spacing-sm;
+}
+
+.acquiredNote {
+  font-size: 12px;
+  font-weight: 600;
+  color: v.$color2-accent-blue;
+}
+
+.nameInput {
+  height: v.$size-input;
+  padding: 0 12px;
+  border: 1px solid v.$color2-border-outer;
+  border-radius: 10px;
+  background: v.$color2-panel;
+  color: v.$color2-text;
+  font-size: 14px;
+}
+
+.depositCard {
+  background: v.$color2-text;
+  border-radius: 16px;
+  padding: 16px;
+}
+
+.depositRow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+}
+
+.depositStepper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 36px;
+  height: 36px;
+  padding: 0;
+  border-radius: 999px;
+  border: none;
+  background: rgba(255, 255, 255, 0.12);
+  color: #ffffff;
+  font-size: 16px;
+  line-height: 1;
+  font-family: inherit;
+  cursor: pointer;
+}
+
+.depositValue {
+  flex: 1 1 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  border-radius: 10px;
+  padding: 10px 4px;
+}
+
+.depositYenMark {
+  font-family: v.$font-mono;
+  font-size: 15px;
+  color: #9fb0c3;
+}
+
+.depositAmount {
+  font-family: v.$font-mono;
+  font-size: 24px;
+  font-weight: 600;
+  color: #ffffff;
+}
+
+.depositHint {
+  margin-top: 10px;
+  text-align: center;
+  font-family: v.$font-mono;
+  font-size: 10px;
+  color: #6b7d92;
+}
+
+.error {
+  font-size: 12px;
+  color: v.$color2-error;
+  text-wrap: pretty;
+}
+
+.submitButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 56px;
+  border: none;
+  border-radius: 18px;
+  background: v.$color2-gradient-cta;
+  color: #ffffff;
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+  margin: 4px 0 10px;
+  transition:
+    box-shadow 0.15s ease,
+    transform 0.15s ease;
+
+  &:hover:not(:disabled) {
+    box-shadow: 0 10px 24px rgba(16, 25, 43, 0.22);
+    transform: translateY(-1px);
+  }
+
+  &:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+}
+
+.footer {
+  flex-shrink: 0;
+  border-top: 1px solid v.$color2-border-outer;
+  padding: 10px 20px;
+  text-align: center;
+  font-size: 10px;
+  color: v.$color2-text-sub;
+
+  a {
+    color: v.$color2-text-sub;
+    text-decoration: none;
+  }
+}

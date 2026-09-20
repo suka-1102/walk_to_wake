@@ -11,27 +11,98 @@
   align-items: center;
   justify-content: center;
   width: 100%;
-  height: v.$size-button;
-  background: v.$color-panel;
-  border: 1px solid v.$color-border-control;
-  color: v.$color-text;
-  font-size: 15px;
+  height: 48px;
+  border: none;
+  border-radius: 16px;
+  background: v.$color2-gradient-cta;
+  color: #ffffff;
+  font-size: 14px;
   font-weight: 700;
   cursor: pointer;
+  transition:
+    box-shadow 0.15s ease,
+    transform 0.15s ease;
 
   &:hover {
-    background: v.$color-panel-head;
+    box-shadow: 0 10px 24px rgba(16, 25, 43, 0.22);
+    transform: translateY(-1px);
   }
 }
 
 .waiting {
   font-size: 13px;
-  color: v.$color-text-sub;
+  color: v.$color2-text-sub;
+  text-align: center;
 }
 
-.error {
+.caption {
+  font-size: 10.5px;
+  line-height: 1.8;
+  color: v.$color2-text-sub;
+  text-align: center;
+  text-wrap: pretty;
+
+  a {
+    color: v.$color2-accent-blue;
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+}
+
+.statusCard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  text-align: center;
+  padding: 8px 4px;
+}
+
+.warningBadge {
+  width: 36px;
+  height: 36px;
+  border-radius: 999px;
+  background: v.$color2-warning-bg;
+  color: v.$color2-warning-text;
+  font-size: 16px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.statusMessage {
   font-size: 12px;
   line-height: 1.8;
-  color: v.$color-danger;
+  color: v.$color2-text-sub;
   text-wrap: pretty;
+}
+
+.accuracyCompare {
+  width: 100%;
+  background: v.$color2-bg;
+  border-radius: 12px;
+  padding: 10px 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.compareRow {
+  display: flex;
+  justify-content: space-between;
+  font-size: 11px;
+  color: v.$color2-text-sub;
+}
+
+.compareError {
+  font-family: v.$font-mono;
+  font-weight: 700;
+  color: v.$color2-error;
+}
+
+.compareOk {
+  font-family: v.$font-mono;
+  font-weight: 600;
+  color: v.$color2-text;
 }

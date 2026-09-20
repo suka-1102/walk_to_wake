@@ -1,43 +1,90 @@
 @use "@/styles/variables" as v;
 
-.fieldset {
-  border: 1px solid v.$color-border;
-  padding: 0;
+.card {
+  background: v.$color2-panel;
+  border-radius: 16px;
+  overflow: hidden;
 }
 
-.legend {
+.hiddenRadio {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.row {
+  position: relative;
   display: flex;
   align-items: center;
-  height: 30px;
-  padding: 0 14px;
-  background: v.$color-panel-head;
-  border-bottom: 1px solid v.$color-border-inner;
-  font-size: 12px;
-  font-weight: 700;
-  letter-spacing: 0.04em;
-  color: v.$color-text-sub;
-}
-
-.list {
-  background: v.$color-panel;
-}
-
-.item:not(:last-child) {
-  border-bottom: 1px solid v.$color-border-inner;
-}
-
-.label {
-  display: flex;
-  align-items: center;
-  gap: v.$spacing-sm;
-  min-height: v.$size-input;
-  padding: 0 14px;
-  font-size: 13px;
+  gap: 12px;
+  padding: 13px 14px;
+  border-bottom: 1px solid v.$color2-border;
   cursor: pointer;
 }
 
-.radio {
-  width: 16px;
-  height: 16px;
-  accent-color: v.$color-accent;
+.rowSelected {
+  background: v.$color2-selected-bg;
+}
+
+.iconBadge {
+  flex-shrink: 0;
+  width: 32px;
+  height: 32px;
+  border-radius: 10px;
+  background: #eef2f6;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.iconBadgeSelected {
+  background: v.$color2-accent-yellow;
+}
+
+.rowBody {
+  flex: 1 1 auto;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.rowName {
+  font-size: 13px;
+  font-weight: 700;
+  color: v.$color2-text;
+}
+
+.rowCoords {
+  font-family: v.$font-mono;
+  font-size: 10px;
+  color: v.$color2-text-sub;
+  margin-top: 2px;
+}
+
+.newRow {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 13px 14px;
+  cursor: pointer;
+}
+
+.newIconBadge {
+  flex-shrink: 0;
+  width: 32px;
+  height: 32px;
+  border-radius: 10px;
+  border: 1.5px dashed #9aa6b2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.newLabel {
+  flex: 1 1 auto;
+  font-size: 12px;
+  font-weight: 600;
+  color: v.$color2-text-sub;
 }
