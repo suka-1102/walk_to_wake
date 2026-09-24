@@ -36,3 +36,22 @@ $breakpoint-lg: 1024px;
 
 // スマホ縦画面を基準に設計し、PC では中央寄せで許容する
 $width-screen: 390px;
+
+// ---- 新デザイン（移行中） ----
+// 2026-09-18、Claude Design canvas で作った新しいモックアップに合わせて追加。
+// 今回は /challenges/new とそこで使う共有コンポーネント（LocationAcquisition）にのみ適用し、
+// 他画面（/login・/terms・/privacy・/tokushoho など）は上の（旧）B｜計器盤トークンのまま。
+// 順次このトークンへ移行し、完了したら旧トークンを削除して一本化する（roadmap.md 決定ログ）。
+$color2-bg: #f6f7f9; // 地
+$color2-panel: #ffffff; // カード
+$color2-border: #eef1f5; // カード内の区切り線
+$color2-border-outer: #e3e8ee; // カードの外枠・ボタン枠
+$color2-text: #10192b; // 文字・主要アクセント（ネイビー）
+$color2-text-sub: #5c6773; // 補助文字
+$color2-accent-blue: #2ea8e0; // アクセント（スカイブルー）
+$color2-accent-yellow: #ffcb3d; // アクセント（イエロー、選択中の目印など）
+$color2-warning-bg: #fff1c7; // 警告アイコンの地
+$color2-warning-text: #8a6d16; // 警告の文字・アイコン線
+$color2-selected-bg: #fff8e6; // 選択中の行の地
+$color2-error: #c0473f; // エラー値の強調
+$color2-gradient-cta: linear-gradient(135deg, $color2-accent-blue, $color2-text); // 主操作ボタン
