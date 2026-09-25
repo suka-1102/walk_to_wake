@@ -1,0 +1,66 @@
+@use "@/styles/variables" as v;
+
+.waiting {
+  font-size: 13px;
+  color: v.$color2-text-sub;
+  text-align: center;
+}
+
+.result {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: v.$spacing-md;
+  text-align: center;
+}
+
+.successBadge,
+.failureBadge {
+  width: 44px;
+  height: 44px;
+  border-radius: 999px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.successBadge {
+  background: v.$color2-accent-blue;
+  color: #ffffff;
+}
+
+.failureBadge {
+  background: v.$color2-warning-bg;
+  color: v.$color2-warning-text;
+}
+
+.resultTitle {
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.resultMessage {
+  font-size: 13px;
+  line-height: 1.8;
+  color: v.$color2-text-sub;
+  text-wrap: pretty;
+}
+
+.primaryButton,
+.primaryLink {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 48px;
+  border: none;
+  border-radius: 16px;
+  background: v.$color2-gradient-cta;
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  text-decoration: none;
+}

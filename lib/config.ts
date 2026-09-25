@@ -7,7 +7,7 @@
 export const CHECK_IN_RADIUS_METERS = 100;
 
 /** 採用してよい位置精度の上限（メートル）。Geolocation の accuracy がこれを超える座標は使わない */
-export const MAX_ACCURACY_METERS = 50;
+export const MAX_ACCURACY_METERS = 500; // TEMP: PC での動作確認用。コミットしない（本来は 50）
 
 /**
  * 位置精度の収束を待つ上限時間（ミリ秒）。
