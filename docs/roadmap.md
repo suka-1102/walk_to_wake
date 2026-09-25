@@ -6,7 +6,7 @@
 
 ## 現在地
 
-**最終更新: 2026-09-13**
+**最終更新: 2026-09-25**
 
 - Phase 0 / Phase 0.5 完了（bun 移行、Tailwind 撤去、SCSS 導入、Vitest 導入済み。位置精度は実測済みで 50m ガード据え置き）
 - 画面構成を確定（[screens.md](screens.md)）
@@ -18,7 +18,9 @@
 - 3.2 完了（`@auth/prisma-adapter` を導入し `lib/auth.ts` に接続。ローカルに MySQL 8.0 をセットアップし（[AGENTS.md](../AGENTS.md)）、`Account`・`Session`・`VerificationToken` を追加してマイグレーションを適用。セッションは DB 参照に切り替わった）
 - 3.3 完了（`/login` とセッションガードを追加。ガードは `proxy.ts`（Next.js 16 で `middleware.ts` から改称）がクッキーの有無だけを見て未ログインを `/login` へ寄せ、実際のセッション検証は各ページの `auth()` で行う。あわせて配色・フォントを画面モックのデザインシステムに寄せた）
 - Phase 3 完了（3.4: `/terms`・`/privacy` を静的ページとして追加。両文書とも共通コンポーネント `app/_legal/LegalDocument.tsx` で描画する。実際にGoogleログインの動作確認まで完了し、Phase 3 が完了した）
-- 次にやること: **Phase 4（`feature/challenge-create`）4.1**
+- Phase 4 完了（位置情報の取得フック・精度不足時の再取得 UI・目標地点の登録と保存・入力値の検証・チャレンジ作成の処理と画面。`/challenges/new` は新デザインで作成。Android 実機での精度確認は未実施）
+- 5.1 完了（`lib/checkIn.ts` の `judgeCheckIn` で期間・受付時間・位置精度・距離を判定し、不成立の理由を型で返す）
+- 次にやること: **Phase 5（`feature/check-in`）5.2**
 
 ## ルール
 
@@ -126,7 +128,7 @@
 
 ## Phase 5 — チェックイン `feature/check-in`
 
-- [ ] **5.1** チェックインの成立判定を追加
+- [x] **5.1** チェックインの成立判定を追加
 - [ ] **5.2** チェックインの登録処理を追加
 - [ ] **5.3** 1日1回の制限を追加
 - [ ] **5.4** チェックイン画面を追加
