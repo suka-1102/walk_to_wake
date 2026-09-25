@@ -1,0 +1,104 @@
+@use "@/styles/variables" as v;
+
+// ヘッダー・フッターは全ページ共通レイアウト（6.3）ができるまで、作成画面と同じく画面ごとに持つ
+
+.screen {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: v.$width-screen;
+  min-height: 100dvh;
+  margin: 0 auto;
+  background: v.$color2-bg;
+  font-family: v.$font-sans;
+  color: v.$color2-text;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  height: 60px;
+  padding: 0 20px;
+  flex-shrink: 0;
+}
+
+.backButton {
+  width: 32px;
+  height: 32px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: v.$color2-panel;
+  border: 1px solid v.$color2-border-outer;
+  flex-shrink: 0;
+}
+
+.title {
+  font-size: 15px;
+  font-weight: 700;
+}
+
+.body {
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  padding: 4px 20px 20px;
+}
+
+.card {
+  background: v.$color2-panel;
+  border-radius: 16px;
+  padding: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.rowLabel {
+  font-size: 11px;
+  color: v.$color2-text-sub;
+}
+
+.rowValue {
+  font-size: 14px;
+  font-weight: 700;
+  text-align: right;
+}
+
+.rowValueMono {
+  font-family: v.$font-mono;
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.note {
+  font-size: 13px;
+  line-height: 1.8;
+  color: v.$color2-text-sub;
+  text-align: center;
+  text-wrap: pretty;
+}
+
+.footer {
+  flex-shrink: 0;
+  border-top: 1px solid v.$color2-border-outer;
+  padding: 10px 20px;
+  text-align: center;
+  font-size: 10px;
+  color: v.$color2-text-sub;
+
+  a {
+    color: v.$color2-text-sub;
+    text-decoration: none;
+  }
+}
