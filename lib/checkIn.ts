@@ -35,7 +35,8 @@ export type CheckInRejection =
 
 export type CheckInJudgement = { ok: true } | ({ ok: false } & CheckInRejection);
 
-const startOfDay = (date: Date): Date =>
+/** 時刻を切り捨て、その日の 0 時にする */
+export const startOfDay = (date: Date): Date =>
   new Date(date.getFullYear(), date.getMonth(), date.getDate());
 
 /**
