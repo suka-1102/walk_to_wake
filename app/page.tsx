@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { redirect } from "next/navigation";
-import { auth, signOut } from "@/lib/auth";
+import { auth } from "@/lib/auth";
 import { getActiveChallenge } from "@/lib/challengeQueries";
 import { CHECK_IN_START_HOUR } from "@/lib/config";
 import { formatTime, formatYen } from "@/lib/format";
@@ -40,13 +40,6 @@ export default async function HomePage() {
 
   if (result.status === "ended") {
     redirect(`/challenges/${result.challengeId}`);
-  }
-
-  // ログアウトの正式な置き場はマイページ（6.6）。ここに置いているのはマイページができるまで
-  // ログイン状態を切り替えて動作を確かめるための仮置き
-  async function signOutFromHome() {
-    "use server";
-    await signOut({ redirectTo: "/login" });
   }
 
   if (result.status === "none") {
@@ -176,12 +169,6 @@ export default async function HomePage() {
             <span>本日の期限を過ぎました。今日は失敗になります。</span>
           </div>
         )}
-
-        <form action={signOutFromHome} className={styles.signOutForm}>
-          <button type="submit" className={styles.signOutButton}>
-            ログアウト
-          </button>
-        </form>
       </div>
 
       <div className={styles.action}>

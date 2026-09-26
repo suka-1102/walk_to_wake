@@ -151,3 +151,46 @@ export async function getChallengeDetail(
 
   return { challenge, summary, records, canCreateNext: active === null };
 }
+
+export type EndedChallenge = {
+  challenge: Challenge;
+  summary: ChallengeSummary;
+  /** 成功した日数（日ごとの記録の成功の数） */
+  successCount: number;
+};
+
+/**
+ * 終了したチャレンジの一覧（開始日が新しい順）。履歴に出す。
+ *
+ * 集計は保存した値ではなく毎回求める（終了済みでも結果は変わらない）。
+ * 進行中のチャレンジは含めない。終了処理（`endedAt` の書き込み）は、ホームか詳細を開いたときに行われる。
+ */
+export async function getEndedChallenges(userId: string, now: Date): Promise<EndedChallenge[]> {
+  const challenges = await prisma.challenge.findMany({
+    where: { userId, endedAt: { not: null } },
+    orderBy: { startDate: "desc" },
+    include: { checkIns: { select: { date: true } } },
+  });
+
+  return Promise.all(
+    challenges.map(async ({ checkIns, ...challenge }) => {
+      const summary = await summarizeStoredChallenge(challenge, now);
+      const records = buildDailyRecords(
+        now,
+        {
+          depositYen: challenge.depositYen,
+          startDate: challenge.startDate,
+          endDate: challenge.endDate,
+          deadline: { hour: challenge.deadlineHour, minute: challenge.deadlineMinute },
+        },
+        checkIns.map((checkIn) => checkIn.date)
+      );
+
+      return {
+        challenge,
+        summary,
+        successCount: records.filter((record) => record.result === "success").length,
+      };
+    })
+  );
+}

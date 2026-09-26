@@ -260,21 +260,3 @@
   line-height: 1.8;
   color: v.$color2-text-sub;
 }
-
-// マイページ（6.6）ができるまでの仮置き
-.signOutForm {
-  margin-top: auto;
-}
-
-.signOutButton {
-  display: block;
-  margin: 0 auto;
-  padding: 6px 12px;
-  border: none;
-  background: transparent;
-  color: v.$color2-text-sub;
-  font-size: 11px;
-  text-decoration: underline;
-  text-underline-offset: 2px;
-  cursor: pointer;
-}

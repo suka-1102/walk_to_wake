@@ -1,0 +1,76 @@
+@use "@/styles/variables" as v;
+
+.dangerLabel {
+  font-size: 12px;
+  color: v.$color2-error;
+}
+
+.dialog {
+  width: calc(100% - 40px);
+  max-width: 350px;
+  margin: auto;
+  padding: 22px 20px 18px;
+  border: none;
+  border-radius: 20px;
+  background: v.$color2-panel;
+  color: v.$color2-text;
+  font-family: v.$font-sans;
+
+  &::backdrop {
+    background: rgba(16, 25, 43, 0.55);
+  }
+}
+
+.title {
+  margin-bottom: 10px;
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.body {
+  font-size: 13px;
+  line-height: 1.8;
+  color: v.$color2-text-sub;
+  text-wrap: pretty;
+}
+
+.warning {
+  margin-top: 10px;
+  padding: 10px 12px;
+  border-radius: 12px;
+  background: v.$color2-error-bg;
+  font-size: 12px;
+  line-height: 1.7;
+  color: v.$color2-error;
+}
+
+.actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 18px;
+}
+
+.cancel,
+.confirm {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+  height: 48px;
+  border-radius: 14px;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.cancel {
+  border: 1px solid v.$color2-border-outer;
+  background: v.$color2-panel;
+  color: v.$color2-text;
+}
+
+.confirm {
+  border: none;
+  background: v.$color2-error;
+  color: #ffffff;
+}
