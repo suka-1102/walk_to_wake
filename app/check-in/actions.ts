@@ -1,9 +1,8 @@
 "use server";
 
 import { auth } from "@/lib/auth";
-import { calculateChallengeBalance } from "@/lib/balance";
+import { summarizeStoredChallenge } from "@/lib/challengeQueries";
 import { judgeCheckIn, startOfDay, type CheckInPosition, type CheckInRejection } from "@/lib/checkIn";
-import { countDaysPastDeadline, lastDayPastDeadline } from "@/lib/deadlineDays";
 import { prisma } from "@/lib/prisma";
 import { Prisma } from "@/lib/generated/prisma/client";
 
@@ -66,27 +65,8 @@ export async function checkIn(position: CheckInPosition): Promise<CheckInResult>
   const now = new Date();
   const deadline = { hour: challenge.deadlineHour, minute: challenge.deadlineMinute };
 
-  // 早期失敗で終わっているチャレンジには、期間内でもチェックインさせない。
-  // 数える範囲は「すでに期限を過ぎた最終日」までに揃える（当日分を含めると過去の失敗を打ち消す）
-  const daysPastDeadline = countDaysPastDeadline(
-    now,
-    challenge.startDate,
-    challenge.endDate,
-    deadline
-  );
-  const lastDay = lastDayPastDeadline(now, challenge.startDate, challenge.endDate, deadline);
-  const checkInCountPastDeadline =
-    lastDay === null
-      ? 0
-      : await prisma.checkIn.count({
-          where: { challengeId: challenge.id, date: { lte: lastDay } },
-        });
-
-  const { hasFailedEarly } = calculateChallengeBalance({
-    depositYen: challenge.depositYen,
-    daysPastDeadline,
-    checkInCountPastDeadline,
-  });
+  // 早期失敗で終わっているチャレンジには、期間内でもチェックインさせない
+  const { hasFailedEarly } = await summarizeStoredChallenge(challenge, now);
 
   if (hasFailedEarly) {
     return { ok: false, reason: "failedEarly" };
