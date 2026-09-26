@@ -3,14 +3,10 @@ import { redirect } from "next/navigation";
 import { auth, signOut } from "@/lib/auth";
 import { getActiveChallenge } from "@/lib/challengeQueries";
 import { CHECK_IN_START_HOUR } from "@/lib/config";
+import { formatTime, formatYen } from "@/lib/format";
 import { judgeTodayStatus, type TodayStatus } from "@/lib/todayStatus";
 import { DeadlineCountdown } from "./DeadlineCountdown";
 import styles from "./page.module.scss";
-
-const formatYen = (yen: number): string => yen.toLocaleString("ja-JP");
-
-const formatTime = (hour: number, minute: number): string =>
-  `${String(hour).padStart(2, "0")}:${String(minute).padStart(2, "0")}`;
 
 const formatMonthDay = (date: Date): string => `${date.getMonth() + 1}/${date.getDate()}`;
 

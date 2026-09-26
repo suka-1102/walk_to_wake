@@ -33,6 +33,25 @@ export async function summarizeStoredChallenge(
   );
 }
 
+/**
+ * 終了条件を満たしているのに未処理のチャレンジを、終了済みにする（`endedAt` を書いて進行中から外す）。
+ * 書き込みは一度だけで、`endedAt` が null の行だけを対象にする。
+ */
+async function endChallengeIfFinished(
+  challenge: Challenge,
+  summary: ChallengeSummary,
+  now: Date
+): Promise<void> {
+  if (!summary.isFinished || challenge.endedAt !== null) {
+    return;
+  }
+
+  await prisma.challenge.updateMany({
+    where: { id: challenge.id, endedAt: null },
+    data: { endedAt: now, activeUserId: null },
+  });
+}
+
 export type ActiveChallengeResult =
   | { status: "none" }
   /** 終了条件を満たしていたため、いま終了処理を行った。画面は詳細へ遷移させる */
@@ -67,10 +86,7 @@ export async function getActiveChallenge(
   const summary = await summarizeStoredChallenge(challenge, now);
 
   if (summary.isFinished) {
-    await prisma.challenge.updateMany({
-      where: { id: challenge.id, endedAt: null },
-      data: { endedAt: now, activeUserId: null },
-    });
+    await endChallengeIfFinished(challenge, summary, now);
     return { status: "ended", challengeId: challenge.id };
   }
 
@@ -80,4 +96,40 @@ export async function getActiveChallenge(
   });
 
   return { status: "active", challenge, summary, checkedInToday: todayCheckIn !== null };
+}
+
+export type ChallengeDetail = {
+  challenge: Challenge;
+  summary: ChallengeSummary;
+  /** 今、新しいチャレンジを作れるか（進行中のチャレンジを持っていない） */
+  canCreateNext: boolean;
+};
+
+/**
+ * チャレンジ詳細に出す情報。進行中・終了済みを問わず `id` で引く。
+ *
+ * 他のユーザーのチャレンジは見せない（`userId` も条件に含め、見つからないものとして扱う）。
+ * ホームを経由せず URL から直接開かれても終了処理が抜けないよう、ここでも終了条件を判定する。
+ * 終了済みかどうかは保存した `endedAt` ではなく、集計（`summary.isFinished`）で決める。
+ */
+export async function getChallengeDetail(
+  userId: string,
+  challengeId: string,
+  now: Date
+): Promise<ChallengeDetail | null> {
+  const challenge = await prisma.challenge.findFirst({ where: { id: challengeId, userId } });
+
+  if (challenge === null) {
+    return null;
+  }
+
+  const summary = await summarizeStoredChallenge(challenge, now);
+  await endChallengeIfFinished(challenge, summary, now);
+
+  const active = await prisma.challenge.findUnique({
+    where: { activeUserId: userId },
+    select: { id: true },
+  });
+
+  return { challenge, summary, canCreateNext: active === null };
 }

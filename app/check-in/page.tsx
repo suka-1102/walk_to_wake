@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { redirect } from "next/navigation";
 import { auth } from "@/lib/auth";
+import { formatTime } from "@/lib/format";
 import { CheckInPanel } from "./CheckInPanel";
 import { getCheckInTarget } from "./queries";
 import styles from "./page.module.scss";
@@ -8,9 +9,6 @@ import styles from "./page.module.scss";
 export const metadata: Metadata = {
   title: "チェックイン | Walk to Wake",
 };
-
-const formatTime = (hour: number, minute: number): string =>
-  `${String(hour).padStart(2, "0")}:${String(minute).padStart(2, "0")}`;
 
 export default async function CheckInPage() {
   const session = await auth();
