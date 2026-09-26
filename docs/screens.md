@@ -2,6 +2,30 @@
 
 サイトマップと各画面の役割。スタイルの書き方は [style.md](style.md)、実装の順番は [roadmap.md](roadmap.md)。
 
+## 画面デザインの正（モックアップ）
+
+**見た目は Claude Design で作ったモックアップが正。** 画面を作る・直すときは、コードを書く前に必ず該当する画面のアートボードを見る。既存画面（`/challenges/new` など）に見た目を寄せるだけで済ませない（モックと食い違う）。
+
+- [Walk to Wake モックアップ](https://claude.ai/artifact/An5hmDPXrQW8EQ6MEUcg4F)
+- [デポジット入力・404/500デザイン](https://claude.ai/artifact/ShPpzEnfYmBv8nqxnzZr9L)（Phase 7 のエラー画面などの参考。デポジット入力の部分は上のモックアップに取り込み済みか、作業前に見比べる）
+
+上のモックアップの構成（アートボード）と、対応する画面:
+
+| アートボード | 画面 |
+|---|---|
+| Home / HomeEmpty | `/`（進行中あり / なし） |
+| Menu | ハンバーガーメニュー（6.3） |
+| CheckInStart / CheckInAccuracy / CheckIn | `/check-in`（取得前 / 精度不足 / 結果） |
+| ChallengeNew | `/challenges/new` |
+| ChallengeDetail | `/challenges/[id]` |
+| History | `/challenges` |
+| MyPage | `/mypage` |
+| NotFound / ServerError | `not-found.tsx` / `error.tsx` |
+
+**読み方。** アーティファクトの HTML は 2MB 超のキャンバス用ページで、中身は `<script id="appifact-doc">` の JSON（`content.files` にアートボードごとの `*.dc.html`）に入っている。`Artifact` ツールの `read` で HTML を保存し、そこから該当の `.dc.html` を取り出して読む。色・余白・角丸・フォントサイズはこの HTML の値をそのまま使う（色は `styles/_variables.scss` の `$color2-*` に対応するものを使い、無いものはトークンとして足す）。
+
+**モックに無い状態は、モックの雰囲気に合わせて足してよい**（例: ホームの「チェックイン済み」「期限切れ」の帯）。足したら実装コミットで気づけるよう、決定ログか「現在地」に書く。**2026-09-12 の旧モック（B｜計器盤、「Walk to Wake 画面モック」）は古い。参照しない。**
+
 ## 前提
 
 - **スマホの縦画面を基準に設計する。** PC は縦長レイアウトのまま中央寄せで許容する

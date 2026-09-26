@@ -17,7 +17,7 @@
 | 読むタイミング | ファイル |
 |---|---|
 | **実装を進めるとき（最初に読む）** | [docs/roadmap.md](docs/roadmap.md) |
-| 画面を作るとき | [docs/screens.md](docs/screens.md) |
+| 画面を作るとき（**見た目の正は Claude Design のモック。リンクは screens.md 冒頭**） | [docs/screens.md](docs/screens.md) |
 | スタイルを書くとき | [docs/style.md](docs/style.md) |
 | テストを書くとき | [docs/testing.md](docs/testing.md) |
 | コミット・PR を出すとき | [docs/workflow.md](docs/workflow.md) |
