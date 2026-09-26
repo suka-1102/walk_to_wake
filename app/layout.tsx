@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { BIZ_UDPGothic, IBM_Plex_Mono } from "next/font/google";
 import { SiteFooter } from "@/components/layout/SiteFooter";
 import { SiteHeader } from "@/components/layout/SiteHeader";
+import { SubPageHeaderSwitch } from "@/components/layout/SubPageHeaderSwitch";
 import "./globals.scss";
 import styles from "./layout.module.scss";
 
@@ -27,6 +28,7 @@ export const metadata: Metadata = {
 
 /**
  * 全ページ共通のヘッダーとフッターをここで付ける。各ページは本文だけを返す。
+ * ヘッダーは、モックで「戻る＋タイトル」だけのヘッダーにしている画面では出さない（`SubPageHeaderSwitch`）。
  * ヘッダーはログイン状態でセッションを引くため、配下のページはすべて動的レンダリングになる。
  */
 export default function RootLayout({ children }: LayoutProps<"/">) {
@@ -38,7 +40,9 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       <body>
         <div className={styles.shell}>
           <div className={styles.column}>
-            <SiteHeader />
+            <SubPageHeaderSwitch>
+              <SiteHeader />
+            </SubPageHeaderSwitch>
             <div className={styles.main}>{children}</div>
             <SiteFooter />
           </div>
