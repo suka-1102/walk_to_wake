@@ -1,0 +1,104 @@
+@use "@/styles/variables" as v;
+
+.menuButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border: 1px solid v.$color2-border-outer;
+  border-radius: 12px;
+  background: v.$color2-panel;
+  color: v.$color2-text;
+  cursor: pointer;
+}
+
+// 開くと画面全体をメニューに切り替える
+.overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  overflow-y: auto;
+  background: v.$color2-bg;
+}
+
+.panel {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: v.$width-screen;
+  min-height: 100dvh;
+  margin: 0 auto;
+  font-family: v.$font-sans;
+  color: v.$color2-text;
+}
+
+.panelHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 60px;
+  padding: 0 16px 0 20px;
+  flex-shrink: 0;
+}
+
+.panelTitle {
+  font-size: 15px;
+  font-weight: 700;
+}
+
+.closeButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border: none;
+  border-radius: 12px;
+  background: v.$color2-text;
+  color: #ffffff;
+  cursor: pointer;
+}
+
+.items {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 8px 20px 0;
+}
+
+.item {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 15px 16px;
+  border-radius: 16px;
+  color: v.$color2-text;
+  text-decoration: none;
+
+  svg {
+    color: v.$color2-text-sub;
+  }
+}
+
+.itemCurrent {
+  background: v.$color2-text;
+  color: #ffffff;
+
+  svg {
+    color: #ffffff;
+  }
+}
+
+.itemLabel {
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.currentDot {
+  margin-left: auto;
+  width: 6px;
+  height: 6px;
+  border-radius: 999px;
+  background: v.$color2-accent-yellow;
+}

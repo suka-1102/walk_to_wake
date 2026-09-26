@@ -1,6 +1,5 @@
 import Link from "next/link";
 import { redirect } from "next/navigation";
-import { BrandLogo } from "@/components/BrandLogo";
 import { auth, signOut } from "@/lib/auth";
 import { getActiveChallenge } from "@/lib/challengeQueries";
 import { CHECK_IN_START_HOUR } from "@/lib/config";
@@ -54,24 +53,9 @@ export default async function HomePage() {
     await signOut({ redirectTo: "/login" });
   }
 
-  const header = (
-    <div className={styles.header}>
-      <BrandLogo />
-      <span className={styles.brandName}>WALK TO WAKE</span>
-    </div>
-  );
-
-  const footer = (
-    <div className={styles.footer}>
-      <Link href="/terms">利用規約</Link> ・ <Link href="/privacy">プライバシーポリシー</Link>
-    </div>
-  );
-
   if (result.status === "none") {
     return (
       <main className={styles.screen}>
-        {header}
-
         <div className={styles.empty}>
           <svg width="88" height="88" viewBox="0 0 88 88" aria-hidden="true">
             <circle cx="44" cy="44" r="44" fill="#eef2f6" />
@@ -102,8 +86,6 @@ export default async function HomePage() {
             チャレンジを作成
           </Link>
         </div>
-
-        {footer}
       </main>
     );
   }
@@ -126,8 +108,6 @@ export default async function HomePage() {
 
   return (
     <main className={styles.screen}>
-      {header}
-
       <div className={styles.content}>
         <div>
           <div className={styles.eyebrow}>進行中のチャレンジ</div>
@@ -217,8 +197,6 @@ export default async function HomePage() {
           </Link>
         )}
       </div>
-
-      {footer}
     </main>
   );
 }

@@ -1,35 +1,13 @@
 @use "@/styles/variables" as v;
 
 // 画面モック（Home / HomeEmpty）に合わせた新デザイン。
-// ヘッダー右のハンバーガーメニューは 6.3 で共通レイアウトとして入れる。
-// ヘッダー・フッターは共通レイアウトができるまで、他の新デザイン画面と同じく画面ごとに持つ。
+// ヘッダー・フッターは全ページ共通（components/layout）。ここは本文だけを持つ。
 
 .screen {
+  flex: 1 1 auto;
   display: flex;
   flex-direction: column;
   width: 100%;
-  max-width: v.$width-screen;
-  min-height: 100dvh;
-  margin: 0 auto;
-  background: v.$color2-bg;
-  font-family: v.$font-sans;
-  color: v.$color2-text;
-}
-
-.header {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  height: 60px;
-  padding: 0 20px;
-  flex-shrink: 0;
-}
-
-.brandName {
-  font-family: v.$font-mono;
-  font-size: 12px;
-  font-weight: 600;
-  letter-spacing: 0.1em;
 }
 
 .content {
@@ -299,18 +277,4 @@
   text-decoration: underline;
   text-underline-offset: 2px;
   cursor: pointer;
-}
-
-.footer {
-  flex-shrink: 0;
-  border-top: 1px solid v.$color2-border-outer;
-  padding: 10px 20px;
-  text-align: center;
-  font-size: 10px;
-  color: v.$color2-text-sub;
-
-  a {
-    color: v.$color2-text-sub;
-    text-decoration: none;
-  }
 }

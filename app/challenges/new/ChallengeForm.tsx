@@ -280,10 +280,6 @@ export function ChallengeForm({ savedLocations }: Props) {
           {submitting ? "作成中…" : "チャレンジを作成する"}
         </button>
       </form>
-
-      <div className={styles.footer}>
-        <Link href="/terms">利用規約</Link> ・ <Link href="/privacy">プライバシーポリシー</Link>
-      </div>
     </main>
   );
 }

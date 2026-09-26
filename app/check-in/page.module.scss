@@ -1,42 +1,17 @@
 @use "@/styles/variables" as v;
 
-// ヘッダー・フッターは全ページ共通レイアウト（6.3）ができるまで、作成画面と同じく画面ごとに持つ
+// ヘッダー・フッターは全ページ共通（components/layout）。ここは本文だけを持つ
 
 .screen {
+  flex: 1 1 auto;
   display: flex;
   flex-direction: column;
   width: 100%;
-  max-width: v.$width-screen;
-  min-height: 100dvh;
-  margin: 0 auto;
-  background: v.$color2-bg;
-  font-family: v.$font-sans;
-  color: v.$color2-text;
-}
-
-.header {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  height: 60px;
-  padding: 0 20px;
-  flex-shrink: 0;
-}
-
-.backButton {
-  width: 32px;
-  height: 32px;
-  border-radius: 10px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: v.$color2-panel;
-  border: 1px solid v.$color2-border-outer;
-  flex-shrink: 0;
 }
 
 .title {
-  font-size: 15px;
+  padding: 6px 20px 10px;
+  font-size: 18px;
   font-weight: 700;
 }
 
@@ -87,18 +62,4 @@
   color: v.$color2-text-sub;
   text-align: center;
   text-wrap: pretty;
-}
-
-.footer {
-  flex-shrink: 0;
-  border-top: 1px solid v.$color2-border-outer;
-  padding: 10px 20px;
-  text-align: center;
-  font-size: 10px;
-  color: v.$color2-text-sub;
-
-  a {
-    color: v.$color2-text-sub;
-    text-decoration: none;
-  }
 }

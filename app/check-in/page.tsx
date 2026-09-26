@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import { redirect } from "next/navigation";
 import { auth } from "@/lib/auth";
 import { CheckInPanel } from "./CheckInPanel";
@@ -24,21 +23,7 @@ export default async function CheckInPage() {
 
   return (
     <main className={styles.screen}>
-      <div className={styles.header}>
-        <Link href="/" className={styles.backButton} aria-label="戻る">
-          <svg width="8" height="14" viewBox="0 0 8 14">
-            <path
-              d="M7 1L1 7l6 6"
-              fill="none"
-              stroke="#10192b"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            />
-          </svg>
-        </Link>
-        <span className={styles.title}>チェックイン</span>
-      </div>
+      <h1 className={styles.title}>チェックイン</h1>
 
       <div className={styles.body}>
         {target === null ? (
@@ -67,10 +52,6 @@ export default async function CheckInPage() {
             </div>
           </>
         )}
-      </div>
-
-      <div className={styles.footer}>
-        <Link href="/terms">利用規約</Link> ・ <Link href="/privacy">プライバシーポリシー</Link>
       </div>
     </main>
   );

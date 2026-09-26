@@ -1,0 +1,25 @@
+@use "@/styles/variables" as v;
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 60px;
+  padding: 0 16px 0 20px;
+  flex-shrink: 0;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: v.$color2-text;
+  text-decoration: none;
+}
+
+.brandName {
+  font-family: v.$font-mono;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+}
