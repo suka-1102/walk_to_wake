@@ -1,4 +1,5 @@
 import { summarizeChallenge, type ChallengeSummary } from "@/lib/challengeSummary";
+import { buildDailyRecords, type DailyRecord } from "@/lib/dailyRecords";
 import { startOfDay } from "@/lib/checkIn";
 import { lastDayPastDeadline } from "@/lib/deadlineDays";
 import type { Challenge } from "@/lib/generated/prisma/client";
@@ -101,6 +102,8 @@ export async function getActiveChallenge(
 export type ChallengeDetail = {
   challenge: Challenge;
   summary: ChallengeSummary;
+  /** 日ごとの成功・失敗の記録（新しい日が先頭） */
+  records: DailyRecord[];
   /** 今、新しいチャレンジを作れるか（進行中のチャレンジを持っていない） */
   canCreateNext: boolean;
 };
@@ -131,5 +134,20 @@ export async function getChallengeDetail(
     select: { id: true },
   });
 
-  return { challenge, summary, canCreateNext: active === null };
+  const checkIns = await prisma.checkIn.findMany({
+    where: { challengeId: challenge.id },
+    select: { date: true },
+  });
+  const records = buildDailyRecords(
+    now,
+    {
+      depositYen: challenge.depositYen,
+      startDate: challenge.startDate,
+      endDate: challenge.endDate,
+      deadline: { hour: challenge.deadlineHour, minute: challenge.deadlineMinute },
+    },
+    checkIns.map((checkIn) => checkIn.date)
+  );
+
+  return { challenge, summary, records, canCreateNext: active === null };
 }

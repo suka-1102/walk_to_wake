@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { formatDate, formatTime, formatYen } from "@/lib/format";
+import { formatDate, formatMonthDayWeekday, formatTime, formatYen } from "@/lib/format";
 
 describe("formatYen", () => {
   it("3桁ごとにカンマで区切る", () => {
@@ -29,5 +29,17 @@ describe("formatDate", () => {
 
   it("年末の日付もずれない", () => {
     expect(formatDate(new Date(2026, 11, 31))).toBe("2026-12-31");
+  });
+});
+
+describe("formatMonthDayWeekday", () => {
+  it("MM/DD (曜) で表す", () => {
+    // 2026-09-16 は水曜
+    expect(formatMonthDayWeekday(new Date(2026, 8, 16))).toBe("09/16 (水)");
+  });
+
+  it("日曜と土曜も正しい", () => {
+    expect(formatMonthDayWeekday(new Date(2026, 8, 13))).toBe("09/13 (日)");
+    expect(formatMonthDayWeekday(new Date(2026, 8, 19))).toBe("09/19 (土)");
   });
 });
