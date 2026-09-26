@@ -17,7 +17,7 @@
 | 読むタイミング | ファイル |
 |---|---|
 | **実装を進めるとき（最初に読む）** | [docs/roadmap.md](docs/roadmap.md) |
-| 画面を作るとき | [docs/screens.md](docs/screens.md) |
+| 画面を作るとき（**見た目の正は Claude Design のモック。リンクは screens.md 冒頭**） | [docs/screens.md](docs/screens.md) |
 | スタイルを書くとき | [docs/style.md](docs/style.md) |
 | テストを書くとき | [docs/testing.md](docs/testing.md) |
 | コミット・PR を出すとき | [docs/workflow.md](docs/workflow.md) |
@@ -72,7 +72,7 @@
 
 **同意はログインをもって得たものとみなす。** ログイン画面に「ログインすると利用規約とプライバシーポリシーに同意したものとみなします」の一文と両ページへのリンクを置き、チェックボックスや同意日時の保存は持たない。v1 は実金銭が動かず、同意の記録を後から突き合わせる場面が存在しないため。**v2 で実決済を入れる際は同意の取得と記録をやり直す。** `/tokushoho` は同意の対象ではなく単なる法定表示なので、ログイン画面の同意文には含めない。
 
-**フッター自体は Phase 6.3（`feature/dashboard`、[roadmap.md](docs/roadmap.md)）まで実装されない。** それまでの間、`/tokushoho` へのリンクは `/terms`・`/privacy` と同様、ログイン画面の同意文の並びに置く。
+**`/tokushoho` へのリンクは全ページ共通のフッター（`components/layout/SiteFooter.tsx`）に置く。** ログイン画面の同意文には含めない（同意の対象ではないため）。
 
 ### プライバシーポリシーに書く項目
 

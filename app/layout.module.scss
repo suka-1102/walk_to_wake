@@ -1,0 +1,25 @@
+@use "@/styles/variables" as v;
+
+// スマホ縦画面の幅を基準にした縦長の1カラム。PC では中央寄せで許容する（screens.md）
+.shell {
+  min-height: 100dvh;
+  background: v.$color2-bg;
+  font-family: v.$font-sans;
+  color: v.$color2-text;
+}
+
+.column {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: v.$width-screen;
+  min-height: 100dvh;
+  margin: 0 auto;
+}
+
+// 各ページの本文。ヘッダーとフッターの間の高さを埋める
+.main {
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+}

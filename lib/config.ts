@@ -36,3 +36,6 @@ export const MAX_ACTIVE_CHALLENGES = 1;
 
 /** タイムゾーン。サーバー・DB とも固定で、変換ロジックは持たない */
 export const TIME_ZONE = "Asia/Tokyo";
+
+/** 表示名の最大文字数。マイページでアプリ内だけ上書きできる名前で、画面に収まる長さに留める */
+export const MAX_DISPLAY_NAME_LENGTH = 30;

@@ -1,0 +1,228 @@
+@use "@/styles/variables" as v;
+
+// 画面モック（ChallengeDetail）に合わせた新デザイン。
+// 終了済みの返金額・システム利用料・次の作成ボタンはモックに無く、screens.md の記述に沿って足している。
+
+.screen {
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  font-family: v.$font-sans;
+  color: v.$color2-text;
+}
+
+// 共通ヘッダー（components/layout）の下に置く「戻る＋タイトル」の行
+.subHeader {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  height: 60px;
+  padding: 0 20px;
+  flex-shrink: 0;
+}
+
+.backButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 32px;
+  height: 32px;
+  border: 1px solid v.$color2-border-outer;
+  border-radius: 10px;
+  background: v.$color2-panel;
+}
+
+.subTitle {
+  font-size: 15px;
+  font-weight: 700;
+}
+
+.content {
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 4px 20px 20px;
+}
+
+.titleBlock {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.titleRow {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+}
+
+.challengeName {
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.meta {
+  font-family: v.$font-mono;
+  font-size: 11px;
+  color: v.$color2-text-sub;
+}
+
+.badge {
+  flex-shrink: 0;
+  padding: 3px 9px;
+  border-radius: 999px;
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.badgeSuccess {
+  background: v.$color2-success-bg;
+  color: v.$color2-success-text;
+}
+
+.badgeNeutral {
+  background: v.$color2-neutral-bg;
+  color: v.$color2-text-sub;
+}
+
+.badgeError {
+  background: v.$color2-error-bg;
+  color: v.$color2-error;
+}
+
+.balanceCard {
+  padding: 20px;
+  border-radius: 20px;
+  background: v.$color2-text;
+}
+
+.balanceLabel {
+  margin-bottom: 6px;
+  font-size: 11px;
+  color: v.$color2-on-dark-sub;
+}
+
+.balanceValue {
+  font-family: v.$font-mono;
+  font-size: 30px;
+  font-weight: 600;
+  line-height: 1;
+  color: #ffffff;
+}
+
+.balanceTotal {
+  font-size: 13px;
+  color: v.$color2-on-dark-mute;
+}
+
+.progressTrack {
+  height: 8px;
+  margin-top: 14px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.12);
+  overflow: hidden;
+}
+
+.progressBar {
+  height: 100%;
+  border-radius: 999px;
+  background: linear-gradient(90deg, v.$color2-accent-blue, v.$color2-accent-yellow);
+}
+
+.stats {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 16px;
+}
+
+.statValue {
+  font-family: v.$font-mono;
+  font-size: 17px;
+  font-weight: 600;
+  color: #ffffff;
+}
+
+.statLabel {
+  margin-top: 2px;
+  font-size: 10px;
+  color: v.$color2-on-dark-sub;
+}
+
+// 終了済みだけに出す、返金額とシステム利用料
+.resultCard {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 16px 14px;
+  border-radius: 16px;
+  background: v.$color2-panel;
+}
+
+.resultRow {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.resultLabel {
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.resultTag {
+  margin-left: 6px;
+  padding: 2px 7px;
+  border-radius: 999px;
+  background: v.$color2-neutral-bg;
+  color: v.$color2-text-sub;
+  font-size: 10px;
+  font-weight: 400;
+}
+
+.resultValue {
+  font-family: v.$font-mono;
+  font-size: 24px;
+  font-weight: 600;
+}
+
+.resultValueSub {
+  font-family: v.$font-mono;
+  font-size: 16px;
+  font-weight: 600;
+  color: v.$color2-text-sub;
+}
+
+.resultNote {
+  padding-top: 10px;
+  border-top: 1px solid v.$color2-border;
+  font-size: 11px;
+  line-height: 1.8;
+  color: v.$color2-text-sub;
+  text-wrap: pretty;
+}
+
+.primaryButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 56px;
+  border-radius: 18px;
+  background: v.$color2-gradient-cta;
+  color: #ffffff;
+  font-size: 16px;
+  font-weight: 700;
+  text-decoration: none;
+  transition:
+    box-shadow 0.15s ease,
+    transform 0.15s ease;
+
+  &:hover {
+    box-shadow: 0 10px 24px rgba(16, 25, 43, 0.22);
+    transform: translateY(-1px);
+  }
+}

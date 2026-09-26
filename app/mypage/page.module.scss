@@ -1,0 +1,222 @@
+@use "@/styles/variables" as v;
+
+// 画面モック（MyPage）に合わせた新デザイン。
+// このファイルは mypage 配下のコンポーネント（一覧・表示名・削除ダイアログ）も共用する。
+
+.screen {
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  font-family: v.$font-sans;
+  color: v.$color2-text;
+}
+
+.content {
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 4px 20px 0;
+}
+
+.title {
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.sectionTitle {
+  margin-bottom: 8px;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.card {
+  overflow: hidden;
+  border-radius: 16px;
+  background: v.$color2-panel;
+
+  // 行と行の区切り線。開いたダイアログ（dialog）には付けない
+  > * + *:not(dialog) {
+    border-top: 1px solid v.$color2-border;
+  }
+}
+
+.emptyCard {
+  padding: 20px 14px;
+  border-radius: 16px;
+  background: v.$color2-panel;
+  font-size: 12px;
+  color: v.$color2-text-sub;
+  text-align: center;
+}
+
+// 保存した目標地点
+.locationRow {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 14px;
+}
+
+.locationIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 30px;
+  height: 30px;
+  border-radius: 9px;
+  background: v.$color2-neutral-bg;
+}
+
+.locationText {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+.locationName {
+  font-size: 13px;
+  font-weight: 700;
+  overflow-wrap: anywhere;
+}
+
+.locationCoords {
+  margin-top: 2px;
+  font-family: v.$font-mono;
+  font-size: 10px;
+  color: v.$color2-text-sub;
+}
+
+.deleteButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 30px;
+  height: 30px;
+  border: none;
+  border-radius: 9px;
+  background: transparent;
+  cursor: pointer;
+
+  &:hover:not(:disabled) {
+    background: v.$color2-error-bg;
+  }
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+}
+
+// アカウント設定
+.settingRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 13px 14px;
+  border: none;
+  background: transparent;
+  text-align: left;
+  cursor: pointer;
+}
+
+.settingLabel {
+  font-size: 12px;
+  color: v.$color2-text-sub;
+}
+
+.settingValue {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.settingName {
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.nameForm {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 13px 14px;
+}
+
+.nameInput {
+  height: v.$size-input;
+  padding: 0 12px;
+  border: 1px solid v.$color2-border-outer;
+  border-radius: 10px;
+  background: v.$color2-panel;
+  color: v.$color2-text;
+  font-size: 14px;
+}
+
+.formError {
+  font-size: 12px;
+  color: v.$color2-error;
+}
+
+.nameActions {
+  display: flex;
+  gap: 10px;
+}
+
+.primaryButton,
+.secondaryButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+  height: 44px;
+  border-radius: 12px;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+
+  &:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+}
+
+.primaryButton {
+  border: none;
+  background: v.$color2-gradient-cta;
+  color: #ffffff;
+}
+
+.secondaryButton {
+  border: 1px solid v.$color2-border-outer;
+  background: v.$color2-panel;
+  color: v.$color2-text;
+}
+
+// ログアウト
+.action {
+  flex-shrink: 0;
+  padding: 14px 20px;
+}
+
+.signOutButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 52px;
+  border: 1px solid #d8dfe6;
+  border-radius: 16px;
+  background: v.$color2-panel;
+  color: v.$color2-text;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+
+  &:hover {
+    background: v.$color2-error-bg;
+  }
+}

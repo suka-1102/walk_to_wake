@@ -79,9 +79,6 @@ export default async function LoginPage() {
           <Link href="/privacy">プライバシーポリシー</Link>{" "}
           に同意したものとみなします
         </p>
-        <p className={styles.consent}>
-          <Link href="/tokushoho">特定商取引法に基づく表記</Link>
-        </p>
       </div>
     </main>
   );

@@ -1,43 +1,262 @@
 @use "@/styles/variables" as v;
 
+// 画面モック（Home / HomeEmpty）に合わせた新デザイン。
+// ヘッダー・フッターは全ページ共通（components/layout）。ここは本文だけを持つ。
+
 .screen {
+  flex: 1 1 auto;
   display: flex;
   flex-direction: column;
-  gap: 14px;
   width: 100%;
-  max-width: v.$width-screen;
-  min-height: 100dvh;
-  margin: 0 auto;
-  padding: 40px v.$spacing-md 12px;
 }
 
-.title {
+.content {
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 6px 20px 0;
+}
+
+.eyebrow {
+  margin-bottom: 4px;
+  font-size: 12px;
+  color: v.$color2-text-sub;
+}
+
+.titleRow {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+}
+
+.challengeName {
   font-size: 20px;
   font-weight: 700;
-  line-height: 1.5;
 }
 
-.note {
-  font-size: 13px;
-  line-height: 1.8;
-  color: v.$color-text-sub;
-  text-wrap: pretty;
+.badge {
+  flex-shrink: 0;
+  padding: 3px 9px;
+  border-radius: 999px;
+  font-size: 11px;
+  font-weight: 700;
 }
 
-.signOutButton {
+.badgeSuccess {
+  background: v.$color2-success-bg;
+  color: v.$color2-success-text;
+}
+
+.badgeInfo {
+  background: v.$color2-info-bg;
+  color: v.$color2-info-text;
+}
+
+.badgeNeutral {
+  background: v.$color2-neutral-bg;
+  color: v.$color2-text-sub;
+}
+
+.badgeError {
+  background: v.$color2-error-bg;
+  color: v.$color2-error;
+}
+
+// 残高カード。全体をタップでチャレンジ詳細へ
+.balanceCard {
+  position: relative;
+  display: block;
+  overflow: hidden;
+  padding: 20px;
+  border-radius: 20px;
+  background: v.$color2-text;
+  color: inherit;
+  text-decoration: none;
+
+  // 右上の朝日のにじみ
+  &::before {
+    content: "";
+    position: absolute;
+    top: -30px;
+    right: -30px;
+    width: 140px;
+    height: 140px;
+    border-radius: 50%;
+    background: radial-gradient(
+      circle,
+      rgba(255, 203, 61, 0.55),
+      rgba(255, 203, 61, 0) 70%
+    );
+  }
+
+  > * {
+    position: relative;
+  }
+}
+
+.balanceLabel {
+  margin-bottom: 6px;
+  font-size: 11px;
+  color: v.$color2-on-dark-sub;
+}
+
+.balanceValue {
+  font-family: v.$font-mono;
+  font-size: 34px;
+  font-weight: 600;
+  line-height: 1;
+  color: #ffffff;
+}
+
+.balanceTotal {
+  font-size: 14px;
+  color: v.$color2-on-dark-mute;
+}
+
+.progressTrack {
+  height: 8px;
+  margin-top: 14px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.12);
+  overflow: hidden;
+}
+
+.progressBar {
+  height: 100%;
+  border-radius: 999px;
+  background: linear-gradient(90deg, v.$color2-accent-blue, v.$color2-accent-yellow);
+}
+
+.stats {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 16px;
+}
+
+.statValue {
+  font-family: v.$font-mono;
+  font-size: 18px;
+  font-weight: 600;
+  color: #ffffff;
+}
+
+.statLabel {
+  margin-top: 2px;
+  font-size: 10px;
+  color: v.$color2-on-dark-sub;
+}
+
+// 今日のチェックインの状況を伝える帯
+.notice {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 14px;
+  border-radius: 14px;
+  font-size: 12px;
+  line-height: 1.6;
+}
+
+.noticeDot {
+  flex-shrink: 0;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: currentColor;
+  opacity: 0.85;
+}
+
+.noticeTime {
+  font-family: v.$font-mono;
+  font-weight: 600;
+}
+
+.noticeWarning {
+  background: v.$color2-selected-bg;
+  color: v.$color2-warning-strip-text;
+
+  .noticeDot {
+    background: v.$color2-accent-yellow;
+    opacity: 1;
+  }
+}
+
+.noticeSuccess {
+  background: v.$color2-success-bg;
+  color: v.$color2-success-text;
+}
+
+.noticeNeutral {
+  background: v.$color2-neutral-bg;
+  color: v.$color2-text-sub;
+}
+
+.noticeError {
+  background: v.$color2-error-bg;
+  color: v.$color2-error;
+}
+
+.action {
+  flex-shrink: 0;
+  padding: 16px 20px 14px;
+}
+
+.primaryButton {
   display: flex;
   align-items: center;
   justify-content: center;
   width: 100%;
-  height: v.$size-button;
-  background: v.$color-panel;
-  border: 1px solid v.$color-border-control;
-  color: v.$color-text;
-  font-size: 15px;
+  height: 56px;
+  border-radius: 18px;
+  background: v.$color2-gradient-cta;
+  color: #ffffff;
+  font-size: 16px;
   font-weight: 700;
-  cursor: pointer;
+  text-decoration: none;
+  transition:
+    box-shadow 0.15s ease,
+    transform 0.15s ease;
 
   &:hover {
-    background: v.$color-panel-head;
+    box-shadow: 0 10px 24px rgba(16, 25, 43, 0.22);
+    transform: translateY(-1px);
   }
+}
+
+.doneButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 56px;
+  border-radius: 18px;
+  background: v.$color2-neutral-bg;
+  color: v.$color2-text-sub;
+  font-size: 16px;
+  font-weight: 700;
+}
+
+// 進行中のチャレンジがないときの画面
+.empty {
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 22px;
+  padding: 0 36px;
+  text-align: center;
+}
+
+.emptyTitle {
+  margin-bottom: 8px;
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.emptyText {
+  font-size: 12px;
+  line-height: 1.8;
+  color: v.$color2-text-sub;
 }
