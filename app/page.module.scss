@@ -236,27 +236,3 @@
   font-size: 16px;
   font-weight: 700;
 }
-
-// 進行中のチャレンジがないときの画面
-.empty {
-  flex: 1 1 auto;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 22px;
-  padding: 0 36px;
-  text-align: center;
-}
-
-.emptyTitle {
-  margin-bottom: 8px;
-  font-size: 18px;
-  font-weight: 700;
-}
-
-.emptyText {
-  font-size: 12px;
-  line-height: 1.8;
-  color: v.$color2-text-sub;
-}
