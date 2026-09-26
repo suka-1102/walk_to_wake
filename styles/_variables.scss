@@ -54,4 +54,14 @@ $color2-warning-bg: #fff1c7; // 警告アイコンの地
 $color2-warning-text: #8a6d16; // 警告の文字・アイコン線
 $color2-selected-bg: #fff8e6; // 選択中の行の地
 $color2-error: #c0473f; // エラー値の強調
+$color2-success-bg: #e7f6ec; // 状態バッジ「受付中」などの地
+$color2-success-text: #1f7a45; // 状態バッジ「受付中」などの文字
+$color2-info-bg: #e6f4fb; // 状態バッジ「チェックイン済み」の地
+$color2-info-text: #0f7ba8; // 状態バッジ「チェックイン済み」の文字
+$color2-neutral-bg: #eef2f6; // 状態バッジ「受付前」・空の状態のアイコンの地
+$color2-neutral-icon: #9aa6b2; // 空の状態のアイコンの線
+$color2-error-bg: #fdecea; // 状態バッジ「期限切れ」の地
+$color2-warning-strip-text: #7a5f14; // 「まだチェックインしていません」の帯の文字
+$color2-on-dark-sub: #9fb0c3; // ネイビーのカード上の補助文字
+$color2-on-dark-mute: #6b7d92; // ネイビーのカード上の、さらに控えめな文字
 $color2-gradient-cta: linear-gradient(135deg, $color2-accent-blue, $color2-text); // 主操作ボタン
