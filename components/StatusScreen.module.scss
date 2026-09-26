@@ -1,0 +1,137 @@
+@use "@/styles/variables" as v;
+
+// 画面モック（NotFound / ServerError）に合わせた新デザイン
+
+.screen {
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  font-family: v.$font-sans;
+  color: v.$color2-text;
+}
+
+.content {
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 22px;
+  padding: 0 32px;
+  text-align: center;
+}
+
+.iconDisk {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 88px;
+  height: 88px;
+  border-radius: 999px;
+  background: v.$color2-neutral-bg;
+}
+
+.iconWarning {
+  width: 92px;
+  height: 92px;
+  background: v.$color2-warning-bg;
+}
+
+.message {
+  width: 100%;
+}
+
+.code {
+  margin-bottom: 6px;
+  font-family: v.$font-mono;
+  font-size: 12px;
+  letter-spacing: 0.1em;
+  color: v.$color2-neutral-icon;
+}
+
+.title {
+  margin-bottom: 8px;
+  font-size: 19px;
+  font-weight: 700;
+}
+
+.text {
+  font-size: 13px;
+  line-height: 1.8;
+  color: v.$color2-text-sub;
+}
+
+.actions {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+  padding: 16px 20px 10px;
+}
+
+// 主操作のボタン。button と a のどちらにも当てる
+.primaryButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 56px;
+  border-radius: 18px;
+  background: v.$color2-gradient-cta;
+  color: #ffffff;
+  font-size: 16px;
+  font-weight: 700;
+  text-decoration: none;
+  cursor: pointer;
+  transition:
+    box-shadow 0.15s ease,
+    transform 0.15s ease;
+
+  &:hover {
+    box-shadow: 0 10px 24px rgba(16, 25, 43, 0.22);
+    transform: translateY(-1px);
+  }
+}
+
+.subLink {
+  font-size: 12px;
+  color: v.$color2-text-sub;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  cursor: pointer;
+
+  &:hover {
+    color: v.$color2-text;
+  }
+}
+
+// エラーの詳細（発生時刻など）
+.detailCard {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 100%;
+  padding: 14px 18px;
+  border-radius: 16px;
+  background: v.$color2-panel;
+  text-align: left;
+}
+
+.detailRow {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  font-size: 12px;
+}
+
+.detailLabel {
+  font-weight: 400;
+  color: v.$color2-text-sub;
+}
+
+.detailValue {
+  font-family: v.$font-mono;
+  font-weight: 600;
+  overflow-wrap: anywhere;
+}

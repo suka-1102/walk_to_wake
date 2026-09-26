@@ -9,7 +9,7 @@ import { usePathname } from "next/navigation";
  * 共通ヘッダーを出さない。`children` はサーバー側で描画済みの `SiteHeader`。
  * `/challenges`（履歴）はこれらに当たらない。
  */
-const isSubPage = (pathname: string): boolean =>
+export const isSubPage = (pathname: string): boolean =>
   pathname === "/challenges/new" || /^\/challenges\/[^/]+$/.test(pathname);
 
 export function SubPageHeaderSwitch({ children }: { children: ReactNode }) {
