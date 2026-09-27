@@ -1,7 +1,7 @@
 @use "@/styles/variables" as v;
 
 .card {
-  background: v.$color2-panel;
+  background: v.$color-panel;
   border-radius: 16px;
   overflow: hidden;
 }
@@ -19,12 +19,12 @@
   align-items: center;
   gap: 12px;
   padding: 13px 14px;
-  border-bottom: 1px solid v.$color2-border;
+  border-bottom: 1px solid v.$color-border;
   cursor: pointer;
 }
 
 .rowSelected {
-  background: v.$color2-selected-bg;
+  background: v.$color-selected-bg;
 }
 
 .iconBadge {
@@ -39,7 +39,7 @@
 }
 
 .iconBadgeSelected {
-  background: v.$color2-accent-yellow;
+  background: v.$color-accent-yellow;
 }
 
 .rowBody {
@@ -52,13 +52,13 @@
 .rowName {
   font-size: 13px;
   font-weight: 700;
-  color: v.$color2-text;
+  color: v.$color-text;
 }
 
 .rowCoords {
   font-family: v.$font-mono;
   font-size: 10px;
-  color: v.$color2-text-sub;
+  color: v.$color-text-sub;
   margin-top: 2px;
 }
 
@@ -86,5 +86,5 @@
   flex: 1 1 auto;
   font-size: 12px;
   font-weight: 600;
-  color: v.$color2-text-sub;
+  color: v.$color-text-sub;
 }

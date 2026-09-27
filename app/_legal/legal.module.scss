@@ -1,22 +1,24 @@
 @use "@/styles/variables" as v;
 
+// 規約・ポリシー・特商法の共通スタイル。画面モックに専用のアートボードは無いので、
+// 新デザインの部品（白いカード・角丸・ネイビーの文字）で組んでいる。
+
 .screen {
   display: flex;
   flex-direction: column;
-  gap: 4px;
   flex: 1 1 auto;
   width: 100%;
-  padding: 24px v.$spacing-md 40px;
+  padding: 8px 20px 32px;
 }
 
 .backLink {
   align-self: flex-start;
-  margin-bottom: 20px;
+  margin-bottom: 16px;
   font-size: 12px;
   color: v.$color-text-sub;
 
   &:hover {
-    color: v.$color-accent;
+    color: v.$color-text;
   }
 }
 
@@ -28,16 +30,29 @@
 }
 
 .intro {
-  margin-bottom: 20px;
+  margin-bottom: 16px;
   font-size: 12px;
   line-height: 1.9;
   color: v.$color-text-sub;
   text-wrap: pretty;
 }
 
+// 条文をまとめる白いカード。条どうしは区切り線で分ける
+.card {
+  padding: 4px 18px;
+  border-radius: 20px;
+  background: v.$color-panel;
+  box-shadow:
+    0 1px 2px rgba(16, 25, 43, 0.05),
+    0 8px 24px rgba(16, 25, 43, 0.06);
+}
+
 .article {
   padding: 16px 0;
-  border-top: 1px solid v.$color-border-inner;
+
+  & + & {
+    border-top: 1px solid v.$color-border;
+  }
 }
 
 .heading {
@@ -49,7 +64,6 @@
 .paragraph {
   font-size: 12px;
   line-height: 1.9;
-  color: v.$color-text;
   text-wrap: pretty;
 
   & + & {
@@ -69,7 +83,6 @@
     padding-left: 22px;
     font-size: 12px;
     line-height: 1.9;
-    color: v.$color-text;
     text-wrap: pretty;
 
     &::before {
@@ -106,15 +119,13 @@
       position: absolute;
       left: 0;
       font-family: v.$font-mono;
-      color: v.$color-border-control;
+      color: v.$color-neutral-icon;
     }
   }
 }
 
 .supplementary {
-  margin-top: 28px;
-  padding-top: 16px;
-  border-top: 1px solid v.$color-border-inner;
+  margin-top: 20px;
   font-size: 11px;
   color: v.$color-text-sub;
 }

@@ -1,19 +1,22 @@
 @use "@/styles/variables" as v;
 
+// 画面モック（ログイン）に合わせた新デザイン。
+// ヘッダー・フッターは全ページ共通（components/layout）。ここは本文だけを持つ。
+
 .screen {
   display: flex;
   flex-direction: column;
-  gap: 22px;
+  gap: 20px;
   flex: 1 1 auto;
   width: 100%;
-  padding: 40px v.$spacing-md 12px;
+  padding: 8px 20px 14px;
 }
 
 .lead {
   display: flex;
   flex-direction: column;
   gap: 12px;
-  padding: 0 2px;
+  padding: 4px 2px 0;
 }
 
 .title {
@@ -31,57 +34,76 @@
   text-wrap: pretty;
 }
 
+.penalty {
+  font-family: v.$font-mono;
+  font-weight: 600;
+  color: v.$color-text;
+}
+
 .guide {
+  overflow: hidden;
+  border-radius: 20px;
   background: v.$color-panel;
-  border: 1px solid v.$color-border;
+  box-shadow:
+    0 1px 2px rgba(16, 25, 43, 0.05),
+    0 8px 24px rgba(16, 25, 43, 0.06);
 }
 
 .guideHeading {
   display: flex;
   align-items: center;
-  height: 30px;
-  padding: 0 14px;
-  background: v.$color-panel-head;
-  border-bottom: 1px solid v.$color-border-inner;
+  height: 34px;
+  padding: 0 16px;
+  background: v.$color-warning-head-bg;
   font-size: 12px;
   font-weight: 700;
   letter-spacing: 0.04em;
-  color: v.$color-text-sub;
+  color: v.$color-warning-text;
 }
 
-// 番号は ::marker ではなくカウンタで出す。区切り線をパネルいっぱいに伸ばしたまま、
-// 折り返した本文を番号の右に揃えるため
 .steps {
-  counter-reset: step;
+  padding: 6px 6px 8px;
 }
 
+// 番号は丸いバッジ。折り返した本文は番号の右に揃える
 .step {
-  position: relative;
-  padding: 11px 14px 11px 39px;
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 8px 10px;
+}
+
+.stepNumber {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  height: 22px;
+  border-radius: 999px;
+  background: v.$color-warning-bg;
+  color: v.$color-warning-text;
+  font-family: v.$font-mono;
+  font-size: 11px;
+  font-weight: 600;
+}
+
+.stepText {
+  padding-top: 2px;
   font-size: 12px;
   line-height: 1.7;
   text-wrap: pretty;
+}
 
-  &::before {
-    counter-increment: step;
-    content: counter(step) ".";
-    position: absolute;
-    left: 14px;
-    font-family: v.$font-mono;
-    font-weight: 600;
-    color: v.$color-text-sub;
-  }
-
-  &:not(:last-child) {
-    border-bottom: 1px solid v.$color-border-inner;
-  }
+.mono {
+  font-family: v.$font-mono;
 }
 
 // ログインボタンと同意文を画面の下端に寄せる
 .action {
   display: flex;
   flex-direction: column;
-  gap: 14px;
+  gap: 12px;
   margin-top: auto;
 }
 
@@ -89,17 +111,23 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  gap: 10px;
   width: 100%;
   height: v.$size-button;
+  border: 1px solid v.$color-border-outer;
+  border-radius: 16px;
   background: v.$color-panel;
-  border: 1px solid v.$color-border-control;
   color: v.$color-text;
   font-size: 15px;
   font-weight: 700;
   cursor: pointer;
+  transition:
+    box-shadow 0.15s ease,
+    transform 0.15s ease;
 
   &:hover {
-    background: v.$color-panel-head;
+    box-shadow: 0 6px 16px rgba(16, 25, 43, 0.12);
+    transform: translateY(-1px);
   }
 }
 
@@ -111,7 +139,7 @@
   text-wrap: pretty;
 
   a {
-    color: v.$color-accent;
+    color: v.$color-info-text;
     text-decoration: underline;
     text-underline-offset: 2px;
   }

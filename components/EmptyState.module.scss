@@ -11,7 +11,7 @@
   padding: 0 36px;
   text-align: center;
   font-family: v.$font-sans;
-  color: v.$color2-text;
+  color: v.$color-text;
 }
 
 .iconDisk {
@@ -21,7 +21,7 @@
   width: 88px;
   height: 88px;
   border-radius: 999px;
-  background: #eef2f6;
+  background: v.$color-neutral-bg;
 }
 
 .title {
@@ -33,5 +33,5 @@
 .text {
   font-size: 12px;
   line-height: 1.8;
-  color: v.$color2-text-sub;
+  color: v.$color-text-sub;
 }

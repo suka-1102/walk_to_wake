@@ -1,67 +1,41 @@
-// 色。画面モックのデザインシステム（B｜計器盤）に合わせる。角丸は持たない
-$color-bg: #f1f4f7; // 地
-$color-panel: #ffffff; // パネル
-$color-panel-head: #f7f9fb; // パネル見出し・注記の地
-$color-text: #0e141a; // 文字
+// 色。画面モック（Claude Design、docs/screens.md 冒頭のリンク）のデザインシステムに合わせる。
+// ネイビー＋スカイブルー＋イエロー、角丸多用、カード＋アイコンバッジ。ダークテーマは持たない。
+$color-bg: #f6f7f9; // 地
+$color-panel: #ffffff; // カード
+$color-border: #eef1f5; // カード内の区切り線
+$color-border-outer: #e3e8ee; // カードの外枠・ボタン枠
+$color-text: #10192b; // 文字・主要アクセント（ネイビー）
 $color-text-sub: #5c6773; // 補助文字
-$color-border: #d8dfe6; // 罫線（外）
-$color-border-inner: #e4eaf0; // 罫線（内）
-$color-border-control: #9aa6b2; // 入力と副ボタンの枠・シェブロン
-$color-divider: #c4ced8; // フッターの区切り
-
-// アクセントは L=0.52 C=0.13 で固定し、色相だけ変える
-$color-accent: oklch(0.52 0.13 245); // 主操作
-$color-danger: oklch(0.52 0.13 27); // 失敗・破壊的操作
-$color-success: oklch(0.52 0.13 150); // 成功・受付中
+$color-accent-blue: #2ea8e0; // アクセント（スカイブルー）
+$color-accent-yellow: #ffcb3d; // アクセント（イエロー、選択中の目印など）
+$color-warning-bg: #fff1c7; // 警告アイコンの地
+$color-warning-text: #8a6d16; // 警告の文字・アイコン線
+$color-warning-head-bg: #fbf7ec; // 見出し帯（使い方）の地
+$color-selected-bg: #fff8e6; // 選択中の行の地
+$color-error: #c0473f; // エラー値の強調
+$color-success-bg: #e7f6ec; // 状態バッジ「受付中」などの地
+$color-success-text: #1f7a45; // 状態バッジ「受付中」などの文字
+$color-info-bg: #e6f4fb; // 状態バッジ「チェックイン済み」の地
+$color-info-text: #0f7ba8; // 状態バッジ「チェックイン済み」の文字・リンク
+$color-neutral-bg: #eef2f6; // 状態バッジ「受付前」・空の状態のアイコンの地
+$color-neutral-icon: #9aa6b2; // 空の状態のアイコンの線
+$color-error-bg: #fdecea; // 状態バッジ「期限切れ」の地
+$color-warning-strip-text: #7a5f14; // 「まだチェックインしていません」の帯の文字
+$color-on-dark-sub: #9fb0c3; // ネイビーのカード上の補助文字
+$color-on-dark-mute: #6b7d92; // ネイビーのカード上の、さらに控えめな文字
+$color-gradient-cta: linear-gradient(135deg, $color-accent-blue, $color-text); // 主操作ボタン
 
 // フォント。日本語本文は BIZ UDPGothic、数値・ラベル・英字は IBM Plex Mono
 $font-sans: var(--font-biz-udpgothic), system-ui, sans-serif;
 $font-mono: var(--font-ibm-plex-mono), monospace;
 
 // 余白
-$spacing-xs: 4px;
 $spacing-sm: 8px;
 $spacing-md: 16px;
-$spacing-lg: 32px;
-$spacing-xl: 64px;
 
 // 寸法。タップ対象は 44px 以上にする
 $size-input: 44px;
 $size-button: 52px;
 
-// ブレークポイント
-$breakpoint-sm: 640px;
-$breakpoint-md: 768px;
-$breakpoint-lg: 1024px;
-
 // スマホ縦画面を基準に設計し、PC では中央寄せで許容する
 $width-screen: 390px;
-
-// ---- 新デザイン（移行中） ----
-// 2026-09-18、Claude Design canvas で作った新しいモックアップに合わせて追加。
-// 今回は /challenges/new とそこで使う共有コンポーネント（LocationAcquisition）にのみ適用し、
-// 他画面（/login・/terms・/privacy・/tokushoho など）は上の（旧）B｜計器盤トークンのまま。
-// 順次このトークンへ移行し、完了したら旧トークンを削除して一本化する（roadmap.md 決定ログ）。
-$color2-bg: #f6f7f9; // 地
-$color2-panel: #ffffff; // カード
-$color2-border: #eef1f5; // カード内の区切り線
-$color2-border-outer: #e3e8ee; // カードの外枠・ボタン枠
-$color2-text: #10192b; // 文字・主要アクセント（ネイビー）
-$color2-text-sub: #5c6773; // 補助文字
-$color2-accent-blue: #2ea8e0; // アクセント（スカイブルー）
-$color2-accent-yellow: #ffcb3d; // アクセント（イエロー、選択中の目印など）
-$color2-warning-bg: #fff1c7; // 警告アイコンの地
-$color2-warning-text: #8a6d16; // 警告の文字・アイコン線
-$color2-selected-bg: #fff8e6; // 選択中の行の地
-$color2-error: #c0473f; // エラー値の強調
-$color2-success-bg: #e7f6ec; // 状態バッジ「受付中」などの地
-$color2-success-text: #1f7a45; // 状態バッジ「受付中」などの文字
-$color2-info-bg: #e6f4fb; // 状態バッジ「チェックイン済み」の地
-$color2-info-text: #0f7ba8; // 状態バッジ「チェックイン済み」の文字
-$color2-neutral-bg: #eef2f6; // 状態バッジ「受付前」・空の状態のアイコンの地
-$color2-neutral-icon: #9aa6b2; // 空の状態のアイコンの線
-$color2-error-bg: #fdecea; // 状態バッジ「期限切れ」の地
-$color2-warning-strip-text: #7a5f14; // 「まだチェックインしていません」の帯の文字
-$color2-on-dark-sub: #9fb0c3; // ネイビーのカード上の補助文字
-$color2-on-dark-mute: #6b7d92; // ネイビーのカード上の、さらに控えめな文字
-$color2-gradient-cta: linear-gradient(135deg, $color2-accent-blue, $color2-text); // 主操作ボタン

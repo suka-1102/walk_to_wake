@@ -38,35 +38,37 @@ export function LegalDocument({
       <h1 className={styles.title}>{title}</h1>
       <p className={styles.intro}>{intro}</p>
 
-      {articles.map((article) => (
-        <section key={article.heading} className={styles.article}>
-          <h2 className={styles.heading}>{article.heading}</h2>
-          {article.blocks.map((block, i) =>
-            block.type === "p" ? (
-              <p key={i} className={styles.paragraph}>
-                {block.text}
-              </p>
-            ) : (
-              <ol key={i} className={styles.list}>
-                {block.items.map((item, j) =>
-                  typeof item === "string" ? (
-                    <li key={j}>{item}</li>
-                  ) : (
-                    <li key={j}>
-                      {item.text}
-                      <ol className={styles.subList}>
-                        {item.sub.map((subItem, k) => (
-                          <li key={k}>{subItem}</li>
-                        ))}
-                      </ol>
-                    </li>
-                  ),
-                )}
-              </ol>
-            ),
-          )}
-        </section>
-      ))}
+      <div className={styles.card}>
+        {articles.map((article) => (
+          <section key={article.heading} className={styles.article}>
+            <h2 className={styles.heading}>{article.heading}</h2>
+            {article.blocks.map((block, i) =>
+              block.type === "p" ? (
+                <p key={i} className={styles.paragraph}>
+                  {block.text}
+                </p>
+              ) : (
+                <ol key={i} className={styles.list}>
+                  {block.items.map((item, j) =>
+                    typeof item === "string" ? (
+                      <li key={j}>{item}</li>
+                    ) : (
+                      <li key={j}>
+                        {item.text}
+                        <ol className={styles.subList}>
+                          {item.sub.map((subItem, k) => (
+                            <li key={k}>{subItem}</li>
+                          ))}
+                        </ol>
+                      </li>
+                    ),
+                  )}
+                </ol>
+              ),
+            )}
+          </section>
+        ))}
+      </div>
 
       {supplementary && (
         <p className={styles.supplementary}>{supplementary}</p>

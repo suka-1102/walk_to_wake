@@ -9,7 +9,7 @@
   flex-direction: column;
   width: 100%;
   font-family: v.$font-sans;
-  color: v.$color2-text;
+  color: v.$color-text;
 }
 
 .content {
@@ -34,20 +34,20 @@
 .card {
   overflow: hidden;
   border-radius: 16px;
-  background: v.$color2-panel;
+  background: v.$color-panel;
 
   // 行と行の区切り線。開いたダイアログ（dialog）には付けない
   > * + *:not(dialog) {
-    border-top: 1px solid v.$color2-border;
+    border-top: 1px solid v.$color-border;
   }
 }
 
 .emptyCard {
   padding: 20px 14px;
   border-radius: 16px;
-  background: v.$color2-panel;
+  background: v.$color-panel;
   font-size: 12px;
-  color: v.$color2-text-sub;
+  color: v.$color-text-sub;
   text-align: center;
 }
 
@@ -67,7 +67,7 @@
   width: 30px;
   height: 30px;
   border-radius: 9px;
-  background: v.$color2-neutral-bg;
+  background: v.$color-neutral-bg;
 }
 
 .locationText {
@@ -85,7 +85,7 @@
   margin-top: 2px;
   font-family: v.$font-mono;
   font-size: 10px;
-  color: v.$color2-text-sub;
+  color: v.$color-text-sub;
 }
 
 .deleteButton {
@@ -101,7 +101,7 @@
   cursor: pointer;
 
   &:hover:not(:disabled) {
-    background: v.$color2-error-bg;
+    background: v.$color-error-bg;
   }
 
   &:disabled {
@@ -125,7 +125,7 @@
 
 .settingLabel {
   font-size: 12px;
-  color: v.$color2-text-sub;
+  color: v.$color-text-sub;
 }
 
 .settingValue {
@@ -149,16 +149,16 @@
 .nameInput {
   height: v.$size-input;
   padding: 0 12px;
-  border: 1px solid v.$color2-border-outer;
+  border: 1px solid v.$color-border-outer;
   border-radius: 10px;
-  background: v.$color2-panel;
-  color: v.$color2-text;
+  background: v.$color-panel;
+  color: v.$color-text;
   font-size: 14px;
 }
 
 .formError {
   font-size: 12px;
-  color: v.$color2-error;
+  color: v.$color-error;
 }
 
 .nameActions {
@@ -186,14 +186,14 @@
 
 .primaryButton {
   border: none;
-  background: v.$color2-gradient-cta;
+  background: v.$color-gradient-cta;
   color: #ffffff;
 }
 
 .secondaryButton {
-  border: 1px solid v.$color2-border-outer;
-  background: v.$color2-panel;
-  color: v.$color2-text;
+  border: 1px solid v.$color-border-outer;
+  background: v.$color-panel;
+  color: v.$color-text;
 }
 
 // ログアウト
@@ -210,13 +210,13 @@
   height: 52px;
   border: 1px solid #d8dfe6;
   border-radius: 16px;
-  background: v.$color2-panel;
-  color: v.$color2-text;
+  background: v.$color-panel;
+  color: v.$color-text;
   font-size: 14px;
   font-weight: 700;
   cursor: pointer;
 
   &:hover {
-    background: v.$color2-error-bg;
+    background: v.$color-error-bg;
   }
 }
