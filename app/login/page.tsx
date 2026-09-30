@@ -35,8 +35,8 @@ export default async function LoginPage() {
   const steps: ReactNode[] = [
     "目標地点まで実際に行き、その場で現在地を登録する",
     <>
-      期限時刻・期間・デポジット額（<span className={styles.mono}>{yen(MIN_DEPOSIT_YEN)}</span> –{" "}
-      <span className={styles.mono}>{MAX_DEPOSIT_YEN.toLocaleString("ja-JP")}</span>）を決める
+      期限時刻・期間・デポジット額（<span className={styles.mono}>{yen(MIN_DEPOSIT_YEN)}</span> 〜{" "}
+      <span className={styles.mono}>{yen(MAX_DEPOSIT_YEN)}</span>）を決める
     </>,
     <>
       毎朝 <span className={styles.mono}>{startTime}</span> から期限時刻までの間に、目標地点でチェックインする
@@ -56,9 +56,9 @@ export default async function LoginPage() {
           決めた場所へ。
         </h1>
         <p className={styles.description}>
-          間に合わなかった日は、預けたデポジットが{" "}
-          <span className={styles.penalty}>{PENALTY_YEN.toLocaleString("ja-JP")}</span>{" "}
-          円ずつ減ります。二度寝の代金を先に払っておく仕組みです。
+          間に合わなかった日は、設定したデポジットが{" "}
+          <span className={styles.penalty}>{yen(PENALTY_YEN)}</span>{" "}
+          ずつ減っていきます。二度寝を防ぐため、先に金額を決めておく仕組みです。
         </p>
       </div>
 
