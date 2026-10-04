@@ -55,7 +55,7 @@ export function CheckInPanel() {
         <span className={styles.successBadge}>✓</span>
         <p className={styles.resultTitle}>チェックインしました</p>
         <Link href="/" className={styles.primaryLink}>
-          ホームへ
+          ホームへ戻る
         </Link>
       </div>
     );
@@ -67,11 +67,11 @@ export function CheckInPanel() {
       <p className={styles.resultMessage}>{describeCheckInFailure(phase.failure)}</p>
       {isRetryable(phase.failure) ? (
         <button type="button" className={styles.primaryButton} onClick={retry}>
-          もう一度取得する
+          再取得する
         </button>
       ) : (
         <Link href="/" className={styles.primaryLink}>
-          ホームへ
+          ホームへ戻る
         </Link>
       )}
     </div>

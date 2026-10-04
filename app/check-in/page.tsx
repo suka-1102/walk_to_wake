@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { redirect } from "next/navigation";
+import { EmptyState } from "@/components/EmptyState";
 import { auth } from "@/lib/auth";
 import { formatTime } from "@/lib/format";
 import { CheckInPanel } from "./CheckInPanel";
@@ -19,37 +20,44 @@ export default async function CheckInPage() {
 
   const target = await getCheckInTarget(session.user.id);
 
+  // 行き先のボタンは置かない。作成の入口はホームとチャレンジ詳細だけ（docs/screens.md）
+  if (target === null) {
+    return (
+      <main className={styles.screen}>
+        <EmptyState icon="pin" title="進行中のチャレンジはありません">
+          ホームからチャレンジを
+          <br />
+          作成してください。
+        </EmptyState>
+      </main>
+    );
+  }
+
   return (
     <main className={styles.screen}>
       <h1 className={styles.title}>チェックイン</h1>
 
       <div className={styles.body}>
-        {target === null ? (
-          <p className={styles.note}>ホームからチャレンジを作成してください</p>
-        ) : (
-          <>
-            <div className={styles.card}>
-              <div className={styles.row}>
-                <span className={styles.rowLabel}>目標地点</span>
-                <span className={styles.rowValue}>{target.locationName}</span>
-              </div>
-              <div className={styles.row}>
-                <span className={styles.rowLabel}>期限</span>
-                <span className={styles.rowValueMono}>
-                  {formatTime(target.deadlineHour, target.deadlineMinute)}
-                </span>
-              </div>
-            </div>
+        <div className={styles.card}>
+          <div className={styles.row}>
+            <span className={styles.rowLabel}>目標地点</span>
+            <span className={styles.rowValue}>{target.locationName}</span>
+          </div>
+          <div className={styles.row}>
+            <span className={styles.rowLabel}>期限</span>
+            <span className={styles.rowValueMono}>
+              {formatTime(target.deadlineHour, target.deadlineMinute)}
+            </span>
+          </div>
+        </div>
 
-            <div className={styles.card}>
-              {target.checkedInToday ? (
-                <p className={styles.note}>今日はすでにチェックイン済みです</p>
-              ) : (
-                <CheckInPanel />
-              )}
-            </div>
-          </>
-        )}
+        <div className={styles.card}>
+          {target.checkedInToday ? (
+            <p className={styles.note}>今日はすでにチェックイン済みです</p>
+          ) : (
+            <CheckInPanel />
+          )}
+        </div>
       </div>
     </main>
   );

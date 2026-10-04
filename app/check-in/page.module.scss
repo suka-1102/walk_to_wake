@@ -24,7 +24,7 @@
 }
 
 .card {
-  background: v.$color2-panel;
+  background: v.$color-panel;
   border-radius: 16px;
   padding: 14px;
   display: flex;
@@ -41,7 +41,7 @@
 
 .rowLabel {
   font-size: 11px;
-  color: v.$color2-text-sub;
+  color: v.$color-text-sub;
 }
 
 .rowValue {
@@ -59,7 +59,7 @@
 .note {
   font-size: 13px;
   line-height: 1.8;
-  color: v.$color2-text-sub;
+  color: v.$color-text-sub;
   text-align: center;
   text-wrap: pretty;
 }

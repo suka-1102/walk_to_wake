@@ -21,7 +21,7 @@
 .eyebrow {
   margin-bottom: 4px;
   font-size: 12px;
-  color: v.$color2-text-sub;
+  color: v.$color-text-sub;
 }
 
 .titleRow {
@@ -44,23 +44,23 @@
 }
 
 .badgeSuccess {
-  background: v.$color2-success-bg;
-  color: v.$color2-success-text;
+  background: v.$color-success-bg;
+  color: v.$color-success-text;
 }
 
 .badgeInfo {
-  background: v.$color2-info-bg;
-  color: v.$color2-info-text;
+  background: v.$color-info-bg;
+  color: v.$color-info-text;
 }
 
 .badgeNeutral {
-  background: v.$color2-neutral-bg;
-  color: v.$color2-text-sub;
+  background: v.$color-neutral-bg;
+  color: v.$color-text-sub;
 }
 
 .badgeError {
-  background: v.$color2-error-bg;
-  color: v.$color2-error;
+  background: v.$color-error-bg;
+  color: v.$color-error;
 }
 
 // 残高カード。全体をタップでチャレンジ詳細へ
@@ -70,7 +70,7 @@
   overflow: hidden;
   padding: 20px;
   border-radius: 20px;
-  background: v.$color2-text;
+  background: v.$color-text;
   color: inherit;
   text-decoration: none;
 
@@ -98,7 +98,7 @@
 .balanceLabel {
   margin-bottom: 6px;
   font-size: 11px;
-  color: v.$color2-on-dark-sub;
+  color: v.$color-on-dark-sub;
 }
 
 .balanceValue {
@@ -111,7 +111,7 @@
 
 .balanceTotal {
   font-size: 14px;
-  color: v.$color2-on-dark-mute;
+  color: v.$color-on-dark-mute;
 }
 
 .progressTrack {
@@ -125,7 +125,7 @@
 .progressBar {
   height: 100%;
   border-radius: 999px;
-  background: linear-gradient(90deg, v.$color2-accent-blue, v.$color2-accent-yellow);
+  background: linear-gradient(90deg, v.$color-accent-blue, v.$color-accent-yellow);
 }
 
 .stats {
@@ -144,7 +144,7 @@
 .statLabel {
   margin-top: 2px;
   font-size: 10px;
-  color: v.$color2-on-dark-sub;
+  color: v.$color-on-dark-sub;
 }
 
 // 今日のチェックインの状況を伝える帯
@@ -173,28 +173,28 @@
 }
 
 .noticeWarning {
-  background: v.$color2-selected-bg;
-  color: v.$color2-warning-strip-text;
+  background: v.$color-selected-bg;
+  color: v.$color-warning-strip-text;
 
   .noticeDot {
-    background: v.$color2-accent-yellow;
+    background: v.$color-accent-yellow;
     opacity: 1;
   }
 }
 
 .noticeSuccess {
-  background: v.$color2-success-bg;
-  color: v.$color2-success-text;
+  background: v.$color-success-bg;
+  color: v.$color-success-text;
 }
 
 .noticeNeutral {
-  background: v.$color2-neutral-bg;
-  color: v.$color2-text-sub;
+  background: v.$color-neutral-bg;
+  color: v.$color-text-sub;
 }
 
 .noticeError {
-  background: v.$color2-error-bg;
-  color: v.$color2-error;
+  background: v.$color-error-bg;
+  color: v.$color-error;
 }
 
 .action {
@@ -209,7 +209,7 @@
   width: 100%;
   height: 56px;
   border-radius: 18px;
-  background: v.$color2-gradient-cta;
+  background: v.$color-gradient-cta;
   color: #ffffff;
   font-size: 16px;
   font-weight: 700;
@@ -231,32 +231,8 @@
   width: 100%;
   height: 56px;
   border-radius: 18px;
-  background: v.$color2-neutral-bg;
-  color: v.$color2-text-sub;
+  background: v.$color-neutral-bg;
+  color: v.$color-text-sub;
   font-size: 16px;
   font-weight: 700;
-}
-
-// 進行中のチャレンジがないときの画面
-.empty {
-  flex: 1 1 auto;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 22px;
-  padding: 0 36px;
-  text-align: center;
-}
-
-.emptyTitle {
-  margin-bottom: 8px;
-  font-size: 18px;
-  font-weight: 700;
-}
-
-.emptyText {
-  font-size: 12px;
-  line-height: 1.8;
-  color: v.$color2-text-sub;
 }

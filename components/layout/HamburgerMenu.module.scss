@@ -6,10 +6,10 @@
   justify-content: center;
   width: 40px;
   height: 40px;
-  border: 1px solid v.$color2-border-outer;
+  border: 1px solid v.$color-border-outer;
   border-radius: 12px;
-  background: v.$color2-panel;
-  color: v.$color2-text;
+  background: v.$color-panel;
+  color: v.$color-text;
   cursor: pointer;
 }
 
@@ -19,7 +19,7 @@
   inset: 0;
   z-index: 100;
   overflow-y: auto;
-  background: v.$color2-bg;
+  background: v.$color-bg;
 }
 
 .panel {
@@ -30,7 +30,7 @@
   min-height: 100dvh;
   margin: 0 auto;
   font-family: v.$font-sans;
-  color: v.$color2-text;
+  color: v.$color-text;
 }
 
 .panelHeader {
@@ -55,7 +55,7 @@
   height: 40px;
   border: none;
   border-radius: 12px;
-  background: v.$color2-text;
+  background: v.$color-text;
   color: #ffffff;
   cursor: pointer;
 }
@@ -73,16 +73,16 @@
   gap: 14px;
   padding: 15px 16px;
   border-radius: 16px;
-  color: v.$color2-text;
+  color: v.$color-text;
   text-decoration: none;
 
   svg {
-    color: v.$color2-text-sub;
+    color: v.$color-text-sub;
   }
 }
 
 .itemCurrent {
-  background: v.$color2-text;
+  background: v.$color-text;
   color: #ffffff;
 
   svg {
@@ -100,5 +100,5 @@
   width: 6px;
   height: 6px;
   border-radius: 999px;
-  background: v.$color2-accent-yellow;
+  background: v.$color-accent-yellow;
 }

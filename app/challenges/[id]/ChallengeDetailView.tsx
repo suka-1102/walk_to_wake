@@ -30,7 +30,7 @@ export function ChallengeDetailView({ challenge, summary, records, canCreateNext
     ? { label: "進行中", className: styles.badgeSuccess }
     : summary.hasFailedEarly
       ? { label: "早期失敗", className: styles.badgeError }
-      : { label: "終了", className: styles.badgeNeutral };
+      : { label: "満了", className: styles.badgeNeutral };
 
   // 進捗バーは、デポジット額に対する残高の割合（見た目だけ。金額の計算には使わない）
   const balancePercent = Math.round((summary.balanceYen / challenge.depositYen) * 100);

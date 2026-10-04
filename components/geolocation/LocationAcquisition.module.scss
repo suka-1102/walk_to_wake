@@ -14,7 +14,7 @@
   height: 48px;
   border: none;
   border-radius: 16px;
-  background: v.$color2-gradient-cta;
+  background: v.$color-gradient-cta;
   color: #ffffff;
   font-size: 14px;
   font-weight: 700;
@@ -31,19 +31,19 @@
 
 .waiting {
   font-size: 13px;
-  color: v.$color2-text-sub;
+  color: v.$color-text-sub;
   text-align: center;
 }
 
 .caption {
   font-size: 10.5px;
   line-height: 1.8;
-  color: v.$color2-text-sub;
+  color: v.$color-text-sub;
   text-align: center;
   text-wrap: pretty;
 
   a {
-    color: v.$color2-accent-blue;
+    color: v.$color-accent-blue;
     text-decoration: underline;
     text-underline-offset: 2px;
   }
@@ -62,8 +62,8 @@
   width: 36px;
   height: 36px;
   border-radius: 999px;
-  background: v.$color2-warning-bg;
-  color: v.$color2-warning-text;
+  background: v.$color-warning-bg;
+  color: v.$color-warning-text;
   font-size: 16px;
   font-weight: 700;
   display: flex;
@@ -74,13 +74,13 @@
 .statusMessage {
   font-size: 12px;
   line-height: 1.8;
-  color: v.$color2-text-sub;
+  color: v.$color-text-sub;
   text-wrap: pretty;
 }
 
 .accuracyCompare {
   width: 100%;
-  background: v.$color2-bg;
+  background: v.$color-bg;
   border-radius: 12px;
   padding: 10px 14px;
   display: flex;
@@ -92,17 +92,17 @@
   display: flex;
   justify-content: space-between;
   font-size: 11px;
-  color: v.$color2-text-sub;
+  color: v.$color-text-sub;
 }
 
 .compareError {
   font-family: v.$font-mono;
   font-weight: 700;
-  color: v.$color2-error;
+  color: v.$color-error;
 }
 
 .compareOk {
   font-family: v.$font-mono;
   font-weight: 600;
-  color: v.$color2-text;
+  color: v.$color-text;
 }

@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { redirect } from "next/navigation";
+import { EmptyState } from "@/components/EmptyState";
 import { auth } from "@/lib/auth";
 import { getActiveChallenge } from "@/lib/challengeQueries";
 import { CHECK_IN_START_HOUR } from "@/lib/config";
@@ -45,36 +46,19 @@ export default async function HomePage() {
   if (result.status === "none") {
     return (
       <main className={styles.screen}>
-        <div className={styles.empty}>
-          <svg width="88" height="88" viewBox="0 0 88 88" aria-hidden="true">
-            <circle cx="44" cy="44" r="44" fill="#eef2f6" />
-            <path
-              d="M44 22c-11 0-20 9-20 20s9 20 20 20 20-9 20-20-9-20-20-20z"
-              fill="none"
-              stroke="#9aa6b2"
-              strokeWidth="2"
-            />
-            <path
-              d="M44 34v8l6 6"
-              fill="none"
-              stroke="#9aa6b2"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            />
-          </svg>
-          <div>
-            <h1 className={styles.emptyTitle}>進行中のチャレンジはありません</h1>
-            <p className={styles.emptyText}>
-              目標地点と期限時刻を決めて、
-              <br />
-              二度寝に効くデポジットを設定しましょう。
-            </p>
-          </div>
-          <Link href="/challenges/new" className={styles.primaryButton}>
-            チャレンジを作成
-          </Link>
-        </div>
+        <EmptyState
+          icon="clock"
+          title="進行中のチャレンジはありません"
+          action={
+            <Link href="/challenges/new" className={styles.primaryButton}>
+              チャレンジを作成
+            </Link>
+          }
+        >
+          目標地点と期限時刻を決めて、
+          <br />
+          二度寝に効くデポジットを設定しましょう。
+        </EmptyState>
       </main>
     );
   }

@@ -1,8 +1,7 @@
 @use "@/styles/variables" as v;
 
 // ---- チャレンジ作成画面 ----
-// 新デザイン（styles/_variables.scss の「新デザイン（移行中）」トークン）を適用した最初の画面。
-// 他画面はまだ旧デザインのまま（roadmap.md 決定ログ参照）。
+// 画面モック（ChallengeNew）に合わせた新デザイン。
 
 .screen {
   flex: 1 1 auto;
@@ -10,7 +9,7 @@
   flex-direction: column;
   width: 100%;
   font-family: v.$font-sans;
-  color: v.$color2-text;
+  color: v.$color-text;
 }
 
 .header {
@@ -29,8 +28,8 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background: v.$color2-panel;
-  border: 1px solid v.$color2-border-outer;
+  background: v.$color-panel;
+  border: 1px solid v.$color-border-outer;
   flex-shrink: 0;
 }
 
@@ -59,7 +58,7 @@
 }
 
 .card {
-  background: v.$color2-panel;
+  background: v.$color-panel;
   border-radius: 16px;
   padding: 14px;
 }
@@ -73,7 +72,7 @@
 
 .rowHint {
   font-size: 11px;
-  color: v.$color2-text-sub;
+  color: v.$color-text-sub;
 }
 
 .rowSeparator {
@@ -86,7 +85,7 @@
 .dateInput {
   border: none;
   background: transparent;
-  color: v.$color2-text;
+  color: v.$color-text;
   font-family: v.$font-mono;
   font-weight: 600;
   font-size: 20px;
@@ -104,7 +103,7 @@
 }
 
 .newLocationCard {
-  background: v.$color2-panel;
+  background: v.$color-panel;
   border-radius: 16px;
   padding: 14px;
 }
@@ -118,21 +117,21 @@
 .acquiredNote {
   font-size: 12px;
   font-weight: 600;
-  color: v.$color2-accent-blue;
+  color: v.$color-accent-blue;
 }
 
 .nameInput {
   height: v.$size-input;
   padding: 0 12px;
-  border: 1px solid v.$color2-border-outer;
+  border: 1px solid v.$color-border-outer;
   border-radius: 10px;
-  background: v.$color2-panel;
-  color: v.$color2-text;
+  background: v.$color-panel;
+  color: v.$color-text;
   font-size: 14px;
 }
 
 .depositCard {
-  background: v.$color2-text;
+  background: v.$color-text;
   border-radius: 16px;
   padding: 16px;
 }
@@ -197,7 +196,7 @@
 
 .error {
   font-size: 12px;
-  color: v.$color2-error;
+  color: v.$color-error;
   text-wrap: pretty;
 }
 
@@ -209,7 +208,7 @@
   height: 56px;
   border: none;
   border-radius: 18px;
-  background: v.$color2-gradient-cta;
+  background: v.$color-gradient-cta;
   color: #ffffff;
   font-size: 16px;
   font-weight: 700;

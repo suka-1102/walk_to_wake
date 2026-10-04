@@ -2,7 +2,7 @@
 
 .dangerLabel {
   font-size: 12px;
-  color: v.$color2-error;
+  color: v.$color-error;
 }
 
 .dialog {
@@ -12,8 +12,8 @@
   padding: 22px 20px 18px;
   border: none;
   border-radius: 20px;
-  background: v.$color2-panel;
-  color: v.$color2-text;
+  background: v.$color-panel;
+  color: v.$color-text;
   font-family: v.$font-sans;
 
   &::backdrop {
@@ -30,7 +30,7 @@
 .body {
   font-size: 13px;
   line-height: 1.8;
-  color: v.$color2-text-sub;
+  color: v.$color-text-sub;
   text-wrap: pretty;
 }
 
@@ -38,10 +38,10 @@
   margin-top: 10px;
   padding: 10px 12px;
   border-radius: 12px;
-  background: v.$color2-error-bg;
+  background: v.$color-error-bg;
   font-size: 12px;
   line-height: 1.7;
-  color: v.$color2-error;
+  color: v.$color-error;
 }
 
 .actions {
@@ -64,13 +64,13 @@
 }
 
 .cancel {
-  border: 1px solid v.$color2-border-outer;
-  background: v.$color2-panel;
-  color: v.$color2-text;
+  border: 1px solid v.$color-border-outer;
+  background: v.$color-panel;
+  color: v.$color-text;
 }
 
 .confirm {
   border: none;
-  background: v.$color2-error;
+  background: v.$color-error;
   color: #ffffff;
 }

@@ -46,7 +46,7 @@ export async function registerSavedLocation(
   }
 
   if (input.accuracy > MAX_ACCURACY_METERS) {
-    return { ok: false, error: "位置精度が不十分です" };
+    return { ok: false, error: "精度が不十分です" };
   }
 
   const location = await prisma.savedLocation.create({

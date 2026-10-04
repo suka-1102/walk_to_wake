@@ -2,7 +2,7 @@
 
 .waiting {
   font-size: 13px;
-  color: v.$color2-text-sub;
+  color: v.$color-text-sub;
   text-align: center;
 }
 
@@ -27,13 +27,13 @@
 }
 
 .successBadge {
-  background: v.$color2-accent-blue;
+  background: v.$color-accent-blue;
   color: #ffffff;
 }
 
 .failureBadge {
-  background: v.$color2-warning-bg;
-  color: v.$color2-warning-text;
+  background: v.$color-warning-bg;
+  color: v.$color-warning-text;
 }
 
 .resultTitle {
@@ -44,7 +44,7 @@
 .resultMessage {
   font-size: 13px;
   line-height: 1.8;
-  color: v.$color2-text-sub;
+  color: v.$color-text-sub;
   text-wrap: pretty;
 }
 
@@ -57,7 +57,7 @@
   height: 48px;
   border: none;
   border-radius: 16px;
-  background: v.$color2-gradient-cta;
+  background: v.$color-gradient-cta;
   color: #ffffff;
   font-size: 14px;
   font-weight: 700;
