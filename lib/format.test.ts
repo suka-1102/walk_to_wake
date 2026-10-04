@@ -1,5 +1,11 @@
 import { describe, expect, it } from "vitest";
-import { formatDate, formatMonthDayWeekday, formatTime, formatYen } from "@/lib/format";
+import {
+  formatClockTime,
+  formatDate,
+  formatMonthDayWeekday,
+  formatTime,
+  formatYen,
+} from "@/lib/format";
 
 describe("formatYen", () => {
   it("3桁ごとにカンマで区切る", () => {
@@ -19,6 +25,16 @@ describe("formatTime", () => {
 
   it("2桁はそのまま", () => {
     expect(formatTime(12, 30)).toBe("12:30");
+  });
+});
+
+describe("formatClockTime", () => {
+  it("時・分・秒それぞれ 1 桁は 0 で埋める", () => {
+    expect(formatClockTime(new Date(2026, 7, 26, 7, 5, 9))).toBe("07:05:09");
+  });
+
+  it("2桁はそのまま", () => {
+    expect(formatClockTime(new Date(2026, 7, 26, 23, 59, 30))).toBe("23:59:30");
   });
 });
 

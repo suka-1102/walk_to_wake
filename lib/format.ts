@@ -5,6 +5,12 @@ export const formatYen = (yen: number): string => yen.toLocaleString("ja-JP");
 export const formatTime = (hour: number, minute: number): string =>
   `${String(hour).padStart(2, "0")}:${String(minute).padStart(2, "0")}`;
 
+/** 時刻を秒まで `HH:MM:SS` で表す（エラー画面の発生時刻など） */
+export const formatClockTime = (date: Date): string =>
+  [date.getHours(), date.getMinutes(), date.getSeconds()]
+    .map((n) => String(n).padStart(2, "0"))
+    .join(":");
+
 /** 日付を `YYYY-MM-DD` で表す。`TIME_ZONE` 固定の前提で実行環境のローカル日付をそのまま読む */
 export const formatDate = (date: Date): string =>
   `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, "0")}-${String(date.getDate()).padStart(2, "0")}`;

@@ -7,11 +7,7 @@ import {
   StatusScreen,
   StatusSubLink,
 } from "@/components/StatusScreen";
-
-const formatClock = (date: Date): string =>
-  [date.getHours(), date.getMinutes(), date.getSeconds()]
-    .map((n) => String(n).padStart(2, "0"))
-    .join(":");
+import { formatClockTime } from "@/lib/format";
 
 /**
  * エラーの画面（画面モックの ServerError）。`error.tsx` と `global-error.tsx` が共用する。
@@ -29,7 +25,7 @@ export function ServerErrorScreen({
   const [occurredAt] = useState(() => new Date());
 
   const rows: [string, ReactNode][] = [
-    ["発生時刻", <span key="time" suppressHydrationWarning>{formatClock(occurredAt)}</span>],
+    ["発生時刻", <span key="time" suppressHydrationWarning>{formatClockTime(occurredAt)}</span>],
   ];
 
   if (digest !== undefined) {
